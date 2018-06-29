@@ -4,7 +4,8 @@
   "description": "My website",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node dist/server/index.js",
+    "build-server": "node_modules/typescript/bin/tsc -p src/server/tsconfig.json"
   },
   "author": "Casey McGuire",
   "license": "ISC",
