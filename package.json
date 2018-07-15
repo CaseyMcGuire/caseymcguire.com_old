@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server/index.js",
-    "build-server": "cp -r src/server/views dist/server/ && node_modules/typescript/bin/tsc -p src/server/tsconfig.json",
+    "build-server": "cp -r src/server/views dist/server/ && node_modules/typescript/bin/tsc",
     "watch-client": "node_modules/webpack-cli/bin/cli.js -w",
     "watch-server": "node_modules/typescript/bin/tsc -w",
-    "watch-dev": "concurrently -k npm:watch-client npm:watch-server"
+    "watch-handlebars": "node_modules/gulp/bin/gulp.js watch-handlebars",
+    "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars"
   },
   "author": "Casey McGuire",
   "license": "ISC",
@@ -21,6 +22,8 @@
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
+    "gulp": "^3.9.1",
+    "gulp-watch": "^5.0.0",
     "ts-loader": "^4.4.2",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8"
