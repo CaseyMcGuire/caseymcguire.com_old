@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server/index.js",
-    "build-server": "cp -r src/server/views dist/server/ && node_modules/typescript/bin/tsc -p src/server/tsconfig.json"
+    "build-server": "cp -r src/server/views dist/server/ && node_modules/typescript/bin/tsc -p src/server/tsconfig.json",
+    "watch-client": "node_modules/webpack-cli/bin/cli.js -w",
+    "watch-shared": "node_modules/typescript/bin/tsc -p src/shared/tsconfig.json -w",
+    "watch-server": "node_modules/typescript/bin/tsc -p src/server/tsconfig.json -w"
   },
   "author": "Casey McGuire",
   "license": "ISC",
