@@ -1,13 +1,21 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/client/main.ts',
+  entry: {
+    main: './src/client/pages/Main.tsx'
+  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
+      },
+      {
+        // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
       }
     ]
   },
@@ -15,7 +23,7 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist/public')
   }
 };
