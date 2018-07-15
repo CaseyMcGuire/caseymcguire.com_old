@@ -9,7 +9,9 @@
     "watch-client": "node_modules/webpack-cli/bin/cli.js -w",
     "watch-server": "node_modules/typescript/bin/tsc -w",
     "watch-handlebars": "node_modules/gulp/bin/gulp.js watch-handlebars",
-    "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars"
+    "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars",
+    "run-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
+    "run-dev": "concurrently npm:watch-dev npm:run-server"
   },
   "author": "Casey McGuire",
   "license": "ISC",
@@ -24,6 +26,7 @@
     "concurrently": "^3.6.0",
     "gulp": "^3.9.1",
     "gulp-watch": "^5.0.0",
+    "nodemon": "^1.18.2",
     "ts-loader": "^4.4.2",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8"

@@ -6,7 +6,7 @@ app.engine('handlebars', expressHandlebars());
 app.set('view engine', 'handlebars');
 
 app.set('views', __dirname + '/views');
-app.use('/public', express.static(__dirname + '/../client'));
+app.use('/public', express.static(__dirname + '/../public'));
 
 app.get('/', (req: express.Request, res: express.Response) => {
   res.render('main');
