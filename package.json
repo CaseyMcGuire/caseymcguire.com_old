@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server/index.js",
-    "build-server": "node_modules/typescript/bin/tsc -p src/server/tsconfig.json"
+    "build-server": "cp -r src/server/views dist/server/ && node_modules/typescript/bin/tsc -p src/server/tsconfig.json"
   },
   "author": "Casey McGuire",
   "license": "ISC",
@@ -13,6 +13,12 @@
     "@types/express": "^4.16.0",
     "@types/node": "^10.3.2",
     "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
     "typescript": "^2.9.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^4.4.2",
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8"
   }
 }
