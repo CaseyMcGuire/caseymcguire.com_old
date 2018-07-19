@@ -12,5 +12,7 @@ export default function configureRoutes(app: Application) {
   const postController = new PostController(postDao);
 
   app.get("/", homeController.index);
+  app.get("/resume", homeController.resume);
 
+  app.get("/posts", postController.index);
 }
