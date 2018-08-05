@@ -1,0 +1,11 @@
+.page-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //border-bottom: solid 1px gray;
+  margin-bottom: 15px;
+}
+
+.name {
+  font-size: 30px;
+}

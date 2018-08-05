@@ -1,9 +1,10 @@
 .page-container {
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .page-content {
-  width: 50%;
+  width: 900px;
 }
