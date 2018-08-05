@@ -5,13 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server/index.js",
-    "build-server": "cp -r src/server/views dist/server/ && node_modules/typescript/bin/tsc",
     "watch-client": "node_modules/webpack-cli/bin/cli.js -w",
     "watch-server": "node_modules/typescript/bin/tsc -w",
     "watch-handlebars": "node_modules/gulp/bin/gulp.js watch-handlebars",
+    "copy-fonts": "node_modules/gulp/bin/gulp.js copy-fonts",
     "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars",
-    "run-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
-    "run-dev": "concurrently npm:watch-dev npm:run-server"
+    "run-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js"
   },
   "author": "Casey McGuire",
   "license": "ISC",

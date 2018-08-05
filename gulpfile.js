@@ -10,3 +10,8 @@ gulp.task('watch-handlebars', () => {
     .pipe(watch(sourceFolder, {base: sourceFolder}))
     .pipe(gulp.dest(destinationFolder));
 });
+
+gulp.task('copy-fonts', () => {
+  gulp.src(["./src/client/assets/**/*"])
+      .pipe(gulp.dest("./dist/public/assets"))
+});
