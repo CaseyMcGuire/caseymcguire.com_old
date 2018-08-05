@@ -8,7 +8,7 @@ export default class HomeController {
   }
 
   public index(req: Request, res: Response) {
-    res.render("main")
+    res.render("home")
   }
 
   public resume(req: Request, res: Response) {

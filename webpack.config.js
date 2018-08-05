@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    main: './src/client/pages/Main.tsx',
+    home: './src/client/pages/Home.tsx',
     resume: './src/client/pages/Resume/Resume.tsx'
   },
   module: {
