@@ -1,0 +1,18 @@
+.education-card-container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.school-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.university-name {
+  font-weight: bold;
+}
+
+.graduation-date {
+  font-style: italic;
+}

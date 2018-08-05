@@ -4,6 +4,7 @@ import Page from "../Page/Page";
 import Section from "./components/Section/Section";
 import EmploymentCard from "./components/EmploymentCard/EmploymentCard";
 import "./Resume.scss";
+import EducationCard from "./components/EducationCard/EducationCard";
 
 class ResumePage extends React.Component<object, object> {
 
@@ -49,6 +50,15 @@ class ResumePage extends React.Component<object, object> {
                 "Developed the UI for an Android mobile application, using React Native and Redux, that allows users to have photos on their phones mailed to them in a variety of formats.",
                 "https://play.google.com/store/apps/details?id=us.printop.mobile.android.store&hl=en"
               ]}/>
+          </Section>
+          <Section title={"TECHNOLOGIES"}>
+
+          </Section>
+          <Section title={"EDUCATION"}>
+            <EducationCard universityName={"University of Puget Sound"}
+                           major={"B.S. In Computer Science"}
+                           minor={"Minor in Mathematics and Economics"}
+                           graduationDate={"December 2015"}/>
           </Section>
         </div>
       </Page>
