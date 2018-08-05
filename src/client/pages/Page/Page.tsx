@@ -9,7 +9,6 @@ export default class Page extends React.Component<object, object> {
       <div className="page-container">
         <div className="page-content">
           <PageHeader />
-
           {this.props.children}
         </div>
       </div>

@@ -5,6 +5,7 @@ import Section from "./components/Section/Section";
 import EmploymentCard from "./components/EmploymentCard/EmploymentCard";
 import "./Resume.scss";
 import EducationCard from "./components/EducationCard/EducationCard";
+import TechnologyInfoCard from "./components/TechnologyInfoCard/TechnologyInfoCard";
 
 class ResumePage extends React.Component<object, object> {
 
@@ -52,7 +53,8 @@ class ResumePage extends React.Component<object, object> {
               ]}/>
           </Section>
           <Section title={"TECHNOLOGIES"}>
-
+            <TechnologyInfoCard programmingLanguages={["Java", "JavaScript", "TypeScript"]} 
+                                technologiesAndTools={["Google Web Toolkit", "React Native", "Redux", "HTML", "CSS", "Git", "Mercurial"]}/>
           </Section>
           <Section title={"EDUCATION"}>
             <EducationCard universityName={"University of Puget Sound"}

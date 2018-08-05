@@ -1,0 +1,22 @@
+.technology-info-card-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.technology-info-card-title {
+  font-weight: bold;
+}
+
+.technology-section-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.technology-section-title-container {
+  flex: 1;
+}
+
+.technology-section-content-container {
+  flex: 2;
+}
