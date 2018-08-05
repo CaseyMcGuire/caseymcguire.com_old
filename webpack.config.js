@@ -2,7 +2,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    main: './src/client/pages/Main.tsx'
+    main: './src/client/pages/Main.tsx',
+    resume: './src/client/pages/Resume/Resume.tsx'
   },
   module: {
     rules: [
@@ -16,6 +17,10 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         loader: "source-map-loader"
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },

@@ -1,9 +1,12 @@
 import * as express from "express";
+import * as expressHandlebars from "express-handlebars";
 const app = express();
-const expressHandlebars = require('express-handlebars');
 import configureRoutes from "./config/routes";
 
-app.engine('handlebars', expressHandlebars());
+app.engine('handlebars', expressHandlebars({
+  defaultLayout: "main",
+  layoutsDir: __dirname + "/views/layouts"
+}));
 app.set('view engine', 'handlebars');
 
 app.set('views', __dirname + '/views');

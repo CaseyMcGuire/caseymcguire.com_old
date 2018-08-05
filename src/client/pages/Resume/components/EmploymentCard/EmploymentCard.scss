@@ -1,0 +1,25 @@
+.employment-card-container {
+  margin-top: 13px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0px;
+}
+
+.title-company-container, .date-location-container {
+  flex-direction: column;
+}
+
+.location-container {
+  text-align: right;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.company-name, .location {
+  font-style: italic;
+}

@@ -12,6 +12,6 @@ export default class HomeController {
   }
 
   public resume(req: Request, res: Response) {
-    res.render("main");
+    res.render("resume");
   }
 }
