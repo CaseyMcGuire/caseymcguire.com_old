@@ -7,20 +7,20 @@ export default class NavigationBar extends React.Component<object, object> {
     return (
       <div className={"navigation-bar-container"}>
         <ul className={"navigation-bar-items"}>
-          <li className={"nav-bar-item"}>
-            <a className={"nav-bar-link"} href="/">Home</a>
-          </li>
-          <li className={"nav-bar-item"}>
-            <a className={"nav-bar-link"} href="/resume">Resume</a>
-          </li>
-          <li className={"nav-bar-item"}>
-            <a className={"nav-bar-link"} href="/blog">Blog</a>
-          </li>
-          <li className={"nav-bar-item"}>
-            <a className={"nav-bar-link"} href="/projects">Projects</a>
-          </li>
+          <NavigationBarItem name={"Home"} link={"/"} />
+          <NavigationBarItem name={"Resume"} link={"/resume"} />
+          <NavigationBarItem name={"Blog"} link={"/blog"} />
+          <NavigationBarItem name={"Projects"} link={"/projects"} />
         </ul>
       </div>
     );
   }
+}
+
+function NavigationBarItem(props: {name: string, link: string}) {
+  return (
+    <li className={"nav-bar-item"}>
+      <a className={"nav-bar-link"} href={props.link}>{props.name}</a>
+    </li>
+  );
 }
