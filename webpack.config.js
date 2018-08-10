@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
   entry: {
     home: './src/client/pages/Home.tsx',
-    resume: './src/client/pages/Resume/Resume.tsx'
+    resume: './src/client/pages/Resume/Resume.tsx',
+    projects: './src/client/pages/Projects/Projects.tsx'
   },
   module: {
     rules: [

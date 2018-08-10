@@ -9,7 +9,7 @@ export default class NavigationBar extends React.Component<object, object> {
         <ul className={"navigation-bar-items"}>
           <NavigationBarItem name={"Home"} link={"/"} />
           <NavigationBarItem name={"Resume"} link={"/resume"} />
-          <NavigationBarItem name={"Blog"} link={"/blog"} />
+          <NavigationBarItem name={"Blog"} link={"/posts"} />
           <NavigationBarItem name={"Projects"} link={"/projects"} />
         </ul>
       </div>

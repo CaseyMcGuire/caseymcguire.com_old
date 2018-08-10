@@ -1,13 +1,15 @@
 import * as React from "react";
+import Page from "../Page/Page";
 import * as ReactDOM from "react-dom";
-import Page from "./Page/Page";
 
-class Home extends React.Component<{}, {}> {
+export default class ProjectsPage extends React.Component<object, object> {
 
   render() {
     return (
       <Page>
-        Home page !
+        <div>
+          Project page!
+        </div>
       </Page>
     );
   }
@@ -15,7 +17,7 @@ class Home extends React.Component<{}, {}> {
 
 window.onload = () => {
   ReactDOM.render(
-    <Home />,
+    <ProjectsPage />,
     document.getElementById("main")
   );
 }
