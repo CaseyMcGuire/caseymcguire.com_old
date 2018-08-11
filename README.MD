@@ -1,11 +1,9 @@
 To Run:
 
 ```$xslt
-node run copy-fonts
-
 # in one terminal
-node run watch-dev
+npm run watch-dev
 
 # in another terminal 
-node run run-server
+npm run start-server
 ```

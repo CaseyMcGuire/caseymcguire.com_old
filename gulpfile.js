@@ -1,17 +1,21 @@
 const gulp = require('gulp');
 const watch = require('gulp-watch');
 
-//source: https://blog.andrewray.me/how-to-copy-only-changed-files-with-gulp/
-const sourceFolder = "./src/server/views";
-const destinationFolder = "./dist/server/views";
-
 gulp.task('watch-handlebars', () => {
-  gulp.src(sourceFolder + '/**/*', {base: sourceFolder})
-    .pipe(watch(sourceFolder, {base: sourceFolder}))
-    .pipe(gulp.dest(destinationFolder));
+  const sourceFolder = "./src/server/views";
+  const destinationFolder = "./dist/server/views";
+  watchFolder(sourceFolder, destinationFolder);
 });
 
-gulp.task('copy-fonts', () => {
-  gulp.src(["./src/client/assets/**/*"])
-      .pipe(gulp.dest("./dist/public/assets"))
+gulp.task('watch-assets', () => {
+  const sourceFolder = "./src/client/assets";
+  const destinationFolder = "./dist/public/assets";
+  watchFolder(sourceFolder, destinationFolder);
 });
+
+//source: https://blog.andrewray.me/how-to-copy-only-changed-files-with-gulp/
+function watchFolder(sourceFolderPath, destinationFolderPath) {
+  gulp.src([sourceFolderPath + "/**/*"], {base: sourceFolderPath})
+    .pipe(watch(sourceFolderPath, {base: sourceFolderPath}))
+    .pipe(gulp.dest(destinationFolderPath))
+}
