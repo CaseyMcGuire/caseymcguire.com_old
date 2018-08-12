@@ -4,7 +4,8 @@ module.exports = {
   entry: {
     home: './src/client/pages/Home.tsx',
     resume: './src/client/pages/Resume/Resume.tsx',
-    projects: './src/client/pages/Projects/Projects.tsx'
+    projects: './src/client/pages/Projects/Projects.tsx',
+    'posts.index': './src/client/pages/Posts/index/PostsIndexPage.tsx'
   },
   module: {
     rules: [

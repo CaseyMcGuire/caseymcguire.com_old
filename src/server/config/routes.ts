@@ -1,5 +1,5 @@
 import {Application} from "express-serve-static-core";
-import {PostController} from "../controllers/PostController";
+import PostController from "../controllers/PostController";
 import HomeController from "../controllers/HomeController";
 import PostgresDatabaseManager from "../db/PostgresDatabaseManager";
 import PostgresPostDaoImpl from "../dao/post/impl/PostgresPostDaoImpl";
@@ -13,6 +13,8 @@ export default function configureRoutes(app: Application) {
 
   app.get("/", homeController.index);
   app.get("/resume", homeController.resume);
+  app.get("/projects", homeController.projects);
 
   app.get("/posts", postController.index);
+  app.get("/posts/new", postController.new);
 }

@@ -17,6 +17,6 @@ export default class HomeController {
   }
 
   public projects(req: Request, res: Response) {
-    res.render("projects");
+    res.render("projects/projects");
   }
 }
