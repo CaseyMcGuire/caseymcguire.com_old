@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/server/index.js",
     "clean": "node_modules/trash-cli/cli.js dist",
-    "watch-client": "node_modules/webpack-cli/bin/cli.js -w",
+    "watch-client": "node_modules/webpack-cli/bin/cli.js -w --mode=development",
     "watch-server": "node_modules/typescript/bin/tsc -w",
     "watch-handlebars": "node_modules/gulp/bin/gulp.js watch-handlebars",
     "watch-assets": "node_modules/gulp/bin/gulp.js watch-assets",
