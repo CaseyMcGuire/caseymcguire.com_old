@@ -7,6 +7,9 @@ module.exports = {
     projects: './src/client/pages/Projects/Projects.tsx',
     'posts.index': './src/client/pages/Posts/index/PostsIndexPage.tsx'
   },
+  watchOptions: {
+    poll: true
+  },
   module: {
     rules: [
       {
