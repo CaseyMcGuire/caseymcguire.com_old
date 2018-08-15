@@ -2,8 +2,8 @@
 
 import { Request, Response } from "express-serve-static-core";
 import { PostDao } from "../dao/post/PostDao";
+import PostsDTO from "../../shared/PostsDTO";
 import PostDTO from "../../shared/PostDTO";
-import {Post} from "../models/Post";
 
 export default class PostController {
 
@@ -21,7 +21,7 @@ export default class PostController {
       else {
         res.render("posts/index", {
           // TODO: we should not be referencing server models on the client
-          posts: JSON.stringify(new PostDTO(posts as Post[]))
+          posts: JSON.stringify(new PostsDTO(posts as PostDTO[]))
         })
       }
     });

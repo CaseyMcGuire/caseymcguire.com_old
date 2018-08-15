@@ -1,5 +1,6 @@
-import {Post} from "../server/models/Post";
 
-export default class PostsDTO {
-  constructor(public readonly posts: Post[]) {}
+export default interface PostDTO {
+  id: number,
+  title: string,
+  contents: string
 }

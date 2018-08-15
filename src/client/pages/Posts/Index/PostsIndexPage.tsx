@@ -1,44 +1,44 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Page from "../../Page/Page";
-import {Post} from "../../../../server/models/Post";
+import Post from "../components/Post/Post";
+import PostDTO from "../../../../shared/PostDTO";
 
 interface State {
-  posts: Post[]
+  posts: PostDTO[]
 }
 
 export default class PostsIndexPage extends React.Component<object, State> {
 
   constructor(props: object) {
     super(props);
+    const initialState = this.getInitialData();
+    this.state = {
+      ...initialState
+    };
+  }
+
+  private getInitialData(): State {
+    // we embed initial data in the DOM
     const data = document.getElementById("params");
     let initialState;
-    console.log(data);
     if (data) {
       initialState = JSON.parse(data.getAttribute("data-initial-data") || '{}');
     }
     else {
       initialState = [];
     }
-    console.log(initialState);
-    this.state = {
-      ...initialState
-    };
-    console.log(this.state);
+    return initialState;
   }
 
   render() {
-    console.log(this.state);
     return (
       <Page>
         <div>
           {
-            this.state.posts.map((elem) => {
+            this.state.posts.map((post) => {
               return (
-                <div>
-                  <div>{elem.title}</div>
-                  <div>{elem.contents}</div>
-                </div>
+                <Post post={post} />
               )
             })
           }
