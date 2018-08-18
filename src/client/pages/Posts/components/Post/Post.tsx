@@ -1,8 +1,11 @@
 import * as React from "react";
-import PostDTO from "../../../../../shared/PostDTO";
+import * as marked from "marked";
+import "./Post.scss";
 
 interface Props {
-  post: PostDTO
+  id?: number,
+  title: string,
+  contents: string
 }
 
 export default class Post extends React.Component<Props,{}> {
@@ -12,11 +15,14 @@ export default class Post extends React.Component<Props,{}> {
       id,
       title,
       contents
-    } = this.props.post;
+    } = this.props;
     return (
       <div className={"post-container"}>
-        <h2>{title}</h2>
-        <div className={"post-contents-container"}>{contents}</div>
+        <div className={"post-title-container"}>
+          <h1 className={"post-title"}>{title}</h1>
+        </div>
+        <div className={"post-contents-container"}
+             dangerouslySetInnerHTML={{__html: marked(contents)}} />
       </div>
     );
   }

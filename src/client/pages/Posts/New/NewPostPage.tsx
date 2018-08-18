@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Page from "../../Page/Page";
-import * as marked from "marked"
 import AceEditor from "../../../components/AceEditor/AceEditor";
 import "./NewPostPage.scss";
+import Post from "../components/Post/Post";
 
 interface State {
+  title: string,
   content: string
 }
 
@@ -13,17 +14,24 @@ export default class NewPostPage extends React.Component<object, State> {
 
   constructor(props: object) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleContentChange = this.handleContentChange.bind(this);
 
     this.state = {
+      title: "",
       content: ""
     }
   }
 
-  private handleChange(content: string): void {
+  private handleContentChange(content: string): void {
     this.setState({
       content: content
     })
+  }
+
+  private handleTitleChange(title: string): void {
+    this.setState({
+      title: title
+    });
   }
 
   render() {
@@ -31,8 +39,15 @@ export default class NewPostPage extends React.Component<object, State> {
     return (
       <Page>
         <div className={"new-post-page-container"}>
-          <AceEditor height={500} width={500} onChange={(content) => this.handleChange(content)}/>
-          <div className={"preview-container"} dangerouslySetInnerHTML={{__html: marked(this.state.content)}}/>
+          <div className={"post-form-container"}>
+            <form>
+              <input className={"title-input"} type="text" placeholder="Title" onChange={(e) => this.handleTitleChange(e.target.value)} />
+            </form>
+          </div>
+          <div className={"ace-editor-container"}>
+            <AceEditor height={500} width={650} onChange={(content) => this.handleContentChange(content)}/>
+          </div>
+          <Post title={this.state.title} contents={this.state.content} />
         </div>
       </Page>
     );

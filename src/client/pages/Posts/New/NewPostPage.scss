@@ -1,4 +1,10 @@
 .new-post-page-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ace-editor-container {
+  border: solid #bababa 1px;
+  border-radius: 2px;
 }
