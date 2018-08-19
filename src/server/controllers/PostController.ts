@@ -10,6 +10,7 @@ export default class PostController {
   constructor(private postDao: PostDao) {
     this.index = this.index.bind(this);
     this.new = this.new.bind(this);
+    this.create = this.create.bind(this);
   }
 
   public index(req: Request, res: Response){
@@ -29,5 +30,9 @@ export default class PostController {
 
   public new(req: Request, res: Response) {
     res.render("posts/new");
+  }
+
+  public create(req: Request, res: Response) {
+    res.redirect("/posts");
   }
 }

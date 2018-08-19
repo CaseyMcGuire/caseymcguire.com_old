@@ -17,4 +17,5 @@ export default function configureRoutes(app: Application) {
 
   app.get("/posts", postController.index);
   app.get("/posts/new", postController.new);
+  app.post("/posts/create", postController.create);
 }
