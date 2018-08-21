@@ -54,7 +54,7 @@ class ResumePage extends React.Component<object, object> {
           </Section>
           <Section title={"TECHNOLOGIES"}>
             <TechnologyInfoCard programmingLanguages={["Java", "JavaScript", "TypeScript"]} 
-                                technologiesAndTools={["Google Web Toolkit", "React Native", "Redux", "HTML", "CSS", "Git", "Mercurial"]}/>
+                                technologiesAndTools={["Google Web Toolkit", "ReactJS", "React Native", "Redux", "HTML", "CSS", "Git", "Mercurial"]}/>
           </Section>
           <Section title={"EDUCATION"}>
             <EducationCard universityName={"University of Puget Sound"}

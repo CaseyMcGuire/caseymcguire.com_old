@@ -1,5 +1,3 @@
-
-
 import { Request, Response } from "express-serve-static-core";
 import { PostDao } from "../dao/post/PostDao";
 import PostsDTO from "../../shared/PostsDTO";

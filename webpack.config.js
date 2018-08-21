@@ -6,7 +6,8 @@ module.exports = {
     resume: './src/client/pages/Resume/Resume.tsx',
     projects: './src/client/pages/Projects/Projects.tsx',
     'posts.index': './src/client/pages/Posts/Index/PostsIndexPage.tsx',
-    'posts.new': './src/client/pages/Posts/New/NewPostPage.tsx'
+    'posts.new': './src/client/pages/Posts/New/NewPostPage.tsx',
+    'sessions.new': './src/client/pages/Sessions/LoginPage.tsx'
   },
   watchOptions: {
     poll: true
