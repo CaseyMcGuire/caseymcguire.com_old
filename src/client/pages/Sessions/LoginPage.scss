@@ -1,0 +1,32 @@
+.login-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  border: solid 1px black;
+  padding: 30px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-container {
+  flex: 1;
+  margin-right: 4px;
+}
+
+.input-container {
+  flex: 1;
+}
+
+.submit-button {
+  padding: 5px;
+  background-color: #2e6da4;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}

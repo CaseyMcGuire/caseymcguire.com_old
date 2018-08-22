@@ -2,7 +2,7 @@ import {Application} from "express-serve-static-core";
 import {PassportStatic} from "passport";
 import { IVerifyOptions, Strategy }from "passport-local";
 import PostgresUserDaoImpl from "../dao/user/impl/PostgresUserDaoImpl";
-import PostgresDatabaseManager from "../db/PostgresDatabaseManager";
+import DaoFactory, {DaoType} from "../dao/DaoFactory";
 const session = require('express-session');
 
 export default function configurePassport(app: Application, passport: PassportStatic) {
@@ -32,7 +32,7 @@ export default function configurePassport(app: Application, passport: PassportSt
       passwordField: 'password'
     },
     (username: string, password: string, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
-      const userDao = new PostgresUserDaoImpl(new PostgresDatabaseManager());
+      const userDao = DaoFactory.get<PostgresUserDaoImpl>(DaoType.USER);
       userDao.getUser(username, (err, user) => {
         if (err) {
           return done(err);
@@ -41,11 +41,17 @@ export default function configurePassport(app: Application, passport: PassportSt
           return done(null, null, {message: "No user found"});
         }
 
-        if (!user.validPassword(password)) {
-          return done(null, null, {message: "invalid password"});
-        }
-
-        return done(null, user);
+        user.validPassword(password, (err, success) => {
+          if (err) {
+            return done(err);
+          }
+          else if (!success) {
+            return done(null, null, {message: "invalid password"});
+          }
+          else {
+            return done(null, user);
+          }
+        })
       })
   }));
 }
