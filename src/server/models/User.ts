@@ -7,7 +7,7 @@ export default class User {
 
 
   public validPassword(password: string, callback: (err: Error, success: boolean) => void): void {
-    bcrypt.compare(this.password, password, (err, success) => {
+    bcrypt.compare(password, this.password, (err, success) => {
       return callback(err, success);
     });
   }
