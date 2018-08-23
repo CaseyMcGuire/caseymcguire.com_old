@@ -1,16 +1,17 @@
 const gulp = require('gulp');
 const watch = require('gulp-watch');
 
+const viewSourceFolder = "./src/server/views";
+const viewDestinationFolder = "./dist/server/views";
+const assetSourceFolder = "./src/client/assets";
+const assetDestinationFolder =  "./dist/public/assets";
+
 gulp.task('watch-handlebars', () => {
-  const sourceFolder = "./src/server/views";
-  const destinationFolder = "./dist/server/views";
-  watchFolder(sourceFolder, destinationFolder);
+  watchFolder(viewSourceFolder, viewDestinationFolder);
 });
 
 gulp.task('watch-assets', () => {
-  const sourceFolder = "./src/client/assets";
-  const destinationFolder = "./dist/public/assets";
-  watchFolder(sourceFolder, destinationFolder);
+  watchFolder(assetSourceFolder, assetDestinationFolder);
 });
 
 //source: https://blog.andrewray.me/how-to-copy-only-changed-files-with-gulp/
@@ -19,3 +20,10 @@ function watchFolder(sourceFolderPath, destinationFolderPath) {
     .pipe(watch(sourceFolderPath, {base: sourceFolderPath}))
     .pipe(gulp.dest(destinationFolderPath))
 }
+
+gulp.task("copy-static-files", () => {
+  gulp.src(viewSourceFolder + "/**/*")
+    .pipe(gulp.dest(viewDestinationFolder));
+  gulp.src(assetSourceFolder + "/**/*")
+    .pipe(gulp.dest(assetDestinationFolder));
+});

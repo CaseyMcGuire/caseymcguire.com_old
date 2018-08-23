@@ -6,13 +6,17 @@
   "scripts": {
     "start": "node dist/server/index.js",
     "clean": "node_modules/trash-cli/cli.js dist",
+    "build-client": "node_modules/webpack-cli/bin/cli.js",
+    "build-server": "node_modules/typescript/bin/tsc",
+    "copy-static-files": "node_modules/gulp/bin/gulp.js copy-static-files",
     "watch-client": "node_modules/webpack-cli/bin/cli.js -w --mode=development",
     "watch-server": "node_modules/typescript/bin/tsc -w",
     "watch-handlebars": "node_modules/gulp/bin/gulp.js watch-handlebars",
     "watch-assets": "node_modules/gulp/bin/gulp.js watch-assets",
     "copy-fonts": "node_modules/gulp/bin/gulp.js copy-fonts",
     "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars npm:watch-assets",
-    "start-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js"
+    "start-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
+    "build-prod": "npm run build-client && npm run build-server && npm run copy-static-files && npm run start"
   },
   "author": "Casey McGuire",
   "license": "ISC",
