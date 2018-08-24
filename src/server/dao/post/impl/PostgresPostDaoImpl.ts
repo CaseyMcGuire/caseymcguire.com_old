@@ -1,13 +1,13 @@
 import {PostDao} from "../PostDao";
 import {Post} from "../../../models/Post";
-import PostgresDatabaseManager from "../../../db/PostgresDatabaseManager";
 import {PostTableRow} from "../../../db/tables/PostTableRow";
+import DatabaseManager from "../../../db/DatabaseManager";
 
 export default class PostgresPostDaoImpl implements PostDao {
 
   private static readonly GET_ALL_POSTS = "SELECT * FROM posts";
 
-  constructor(private readonly databaseManager: PostgresDatabaseManager) {}
+  constructor(private readonly databaseManager: DatabaseManager) {}
 
   getPosts(callback: (err?: Error, posts?: Post[]) => void): void {
     this.databaseManager.query(PostgresPostDaoImpl.GET_ALL_POSTS, [], (err, result) => {
@@ -17,7 +17,7 @@ export default class PostgresPostDaoImpl implements PostDao {
       else if (!result) {
         return callback(undefined, []);
       }
-      const postRows = result.rows as PostTableRow[];
+      const postRows = result as PostTableRow[];
       const posts = postRows.map(this.convertRowToPost);
       callback(undefined, posts);
     });
