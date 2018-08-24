@@ -17,7 +17,7 @@
     "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars npm:watch-assets",
     "start-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
     "build-prod": "npm install && npm run build-client && npm run build-server && npm run copy-static-files",
-    "heroku-postbuild": "npm run build-prod && npm run start"
+    "heroku-postbuild": "npm run build-prod"
   },
   "author": "Casey McGuire",
   "license": "ISC",
