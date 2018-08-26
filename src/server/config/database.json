@@ -1,0 +1,13 @@
+{
+
+  "dev": {
+    "driver": "pg",
+    "user": {"ENV": "MY_SITE_USER"},
+    "password": {"ENV": "MY_SITE_PASSWORD"},
+    "host": {"ENV": "MY_SITE_HOST"},
+    "database": {"ENV": "MY_SITE_DATABASE"}
+  },
+  "pg": {
+
+  }
+}

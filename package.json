@@ -16,6 +16,8 @@
     "copy-fonts": "node_modules/gulp/bin/gulp.js copy-fonts",
     "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars npm:watch-assets",
     "start-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
+    "db-migrate": "node_modules/db-migrate/bin/db-migrate --config ./src/server/config/database.json --migrations-dir src/server/db/migrations",
+    "setup-database": "bin/setup_database.sh",
     "build-prod": "npm install && npm run build-client && npm run build-server && npm run copy-static-files",
     "heroku-postbuild": "npm run build-prod"
   },
@@ -26,6 +28,8 @@
     "bcryptjs": "^2.4.3",
     "brace": "^0.11.1",
     "cookie-parser": "^1.4.3",
+    "db-migrate": "^0.11.1",
+    "db-migrate-pg": "^0.4.0",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",

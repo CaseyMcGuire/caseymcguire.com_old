@@ -26,6 +26,8 @@ echo "Setting up database..."
 psql -U postgres -c "CREATE USER $MY_SITE_USER WITH ENCRYPTED PASSWORD '$MY_SITE_PASSWORD';"
 psql -U postgres -c "CREATE DATABASE $MY_SITE_DATABASE;"
 psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $MY_SITE_DATABASE TO $MY_SITE_USER;"
-psql -U $MY_SITE_USER -d mysite -a -f src/server/config/tables.sql
+
+echo "running migrations..."
+npm run db-migrate up
 
 
