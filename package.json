@@ -18,7 +18,7 @@
     "start-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
     "db-migrate": "node_modules/db-migrate/bin/db-migrate --config ./src/server/config/database.json --migrations-dir src/server/db/migrations",
     "setup-database": "bin/setup_database.sh",
-    "build-prod": "npm install && npm run build-client && npm run build-server && npm run copy-static-files",
+    "build-prod": "npm install && npm run build-client && npm run build-server && npm run copy-static-files && npm run setup-database",
     "heroku-postbuild": "npm run build-prod"
   },
   "author": "Casey McGuire",
