@@ -29,8 +29,17 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/projects", homeController.projects);
 
   app.get("/posts", postController.index);
-  app.get("/posts/new", isLoggedIn, postController.new);
-  app.post("/posts/create", isLoggedIn, postController.create);
+  app.get("/posts/new", isAdmin, postController.new);
+  app.post("/posts/create", isAdmin, postController.create);
+}
+
+function isAdmin(req: Request, res: Response, next: NextFunction) {
+  if (req.isAuthenticated() && req.user.isAdmin) {
+    next();
+  }
+  else {
+    res.redirect("/");
+  }
 }
 
 function isLoggedIn(req: Request, res: Response, next: NextFunction) {

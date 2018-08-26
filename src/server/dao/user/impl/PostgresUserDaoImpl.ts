@@ -6,19 +6,30 @@ import DatabaseManager from "../../../db/DatabaseManager";
 export default class PostgresUserDaoImpl implements UserDao {
 
   private static readonly GET_USER_BY_EMAIL = "SELECT * FROM users WHERE email = $1";
+  private static readonly GET_USER_BY_ID = "SELECT * FROM users WHERE id = $1";
   private static readonly SAVE_USER = "INSERT INTO users (email, password, is_admin) VALUES ($1, $2, false)";
 
   constructor(private readonly databaseManager: DatabaseManager) {}
 
-  getUser(email: string, callback: (err: Error | undefined, user?: User) => void): void {
+  getUserByEmail(email: string, callback: (err: Error | undefined, user?: User) => void): void {
     this.databaseManager.query(PostgresUserDaoImpl.GET_USER_BY_EMAIL, [email], (err: Error | undefined, result?: any[]) => {
-      if (err || !result || result.length === 0) {
-        return callback(err);
-      }
-      const userTableRow = result[0] as UserTableRow;
-      const user = this.convertRowToUser(userTableRow);
-      return callback(undefined, user);
+      return this.handleUserResult(callback, err, result);
     });
+  }
+
+  getUserById(id: number, callback: (err: (Error | undefined), user?: User) => void): void {
+    this.databaseManager.query(PostgresUserDaoImpl.GET_USER_BY_ID, [id], (err: Error | undefined, result?: any) => {
+      return this.handleUserResult(callback, err, result);
+    })
+  }
+
+  private handleUserResult(callback: (err: Error | undefined, user?: User) => void, err: Error | undefined, result?: any) {
+    if (err || !result || result.length === 0) {
+      return callback(err);
+    }
+    const userTableRow = result[0] as UserTableRow;
+    const user = this.convertRowToUser(userTableRow);
+    return callback(undefined, user);
   }
 
   saveUser(user: User, callback: (err: (Error | undefined)) => void): void {
@@ -28,7 +39,7 @@ export default class PostgresUserDaoImpl implements UserDao {
   }
 
   private convertRowToUser(userTableRow: UserTableRow): User {
-    return new User(userTableRow.email, userTableRow.password);
+    return new User(userTableRow.email, userTableRow.password, userTableRow.id, userTableRow.is_admin);
   }
 
 }

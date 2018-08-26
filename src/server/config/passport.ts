@@ -23,8 +23,16 @@ export default function configurePassport(app: Application, passport: PassportSt
   app.use(passport.session());
 
 
-  passport.deserializeUser((user, done) => done(null, user));
-  passport.serializeUser((user, done) => done(null, user));
+  passport.deserializeUser((id: number, done) => {
+    const userDao = DaoFactory.get<PostgresUserDaoImpl>(DaoType.USER);
+    userDao.getUserById(id, (err, user) => {
+      done(err, user);
+    })
+  });
+
+  passport.serializeUser((user: User, done) => {
+    done(null, user.id);
+  });
 
   const LocalStrategy = Strategy;
 
@@ -35,7 +43,7 @@ export default function configurePassport(app: Application, passport: PassportSt
     },
     (username: string, password: string, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
       const userDao = DaoFactory.get<PostgresUserDaoImpl>(DaoType.USER);
-      userDao.getUser(username, (err, user) => {
+      userDao.getUserByEmail(username, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -63,10 +71,12 @@ export default function configurePassport(app: Application, passport: PassportSt
     },
     (req: Request, email: string, password: string, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
       const userDao = DaoFactory.get<PostgresUserDaoImpl>(DaoType.USER);
-      userDao.getUser(email, (err, user) => {
+      userDao.getUserByEmail(email, (err, user) => {
         if (err) {
           return done(err, null);
         }
+
+        // there is already a user with that email
         if (user) {
           return done(null, user);
         }
