@@ -1,6 +1,6 @@
 export default interface UserTableRow {
   id: number,
-  username: string,
+  is_admin: boolean,
   password: string,
   email: string
 }

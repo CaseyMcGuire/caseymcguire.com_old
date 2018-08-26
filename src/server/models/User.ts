@@ -2,8 +2,8 @@ import * as bcrypt from "bcryptjs";
 
 export default class User {
 
-  constructor(private readonly email: string,
-              private readonly password: string) {}
+  constructor(public readonly email: string,
+              public readonly password: string) {}
 
 
   public validPassword(password: string, callback: (err: Error, success: boolean) => void): void {

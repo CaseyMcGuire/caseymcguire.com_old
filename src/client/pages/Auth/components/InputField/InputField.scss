@@ -1,0 +1,14 @@
+.form-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-container {
+  flex: 1;
+  margin-right: 4px;
+  font-size: 15px;
+}
+
+.input-container {
+  flex: 1;
+}

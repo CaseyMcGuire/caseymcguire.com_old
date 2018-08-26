@@ -7,7 +7,8 @@ module.exports = {
     projects: './src/client/pages/Projects/Projects.tsx',
     'posts.index': './src/client/pages/Posts/Index/PostsIndexPage.tsx',
     'posts.new': './src/client/pages/Posts/New/NewPostPage.tsx',
-    'sessions.new': './src/client/pages/Sessions/LoginPage.tsx'
+    'sessions.new': './src/client/pages/Auth/Sessions/LoginPage.tsx',
+    'users.new': './src/client/pages/Auth/Users/SignUpPage.tsx'
   },
   watchOptions: {
     poll: true

@@ -21,6 +21,9 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.post("/sessions/create", sessionController.create);
   app.post("/sessions/destroy", isLoggedIn, sessionController.destroy);
 
+  app.get("/signup", userController.new);
+  app.post("/users/create", userController.create);
+
   app.get("/", homeController.index);
   app.get("/resume", homeController.resume);
   app.get("/projects", homeController.projects);
