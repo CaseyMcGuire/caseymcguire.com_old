@@ -15,8 +15,8 @@ export default class LoginPage extends React.Component<{}, {}> {
     return (
       <Page>
         <AuthFormContainer action={"/sessions/create"}>
-          <FormField title={"Email"} formName={"email"} />
-          <FormField title={"Password"} formName={"password"} />
+          <FormField title={"Email"} formName={"email"} type={"text"} />
+          <FormField title={"Password"} formName={"password"} type={"password"} />
         </AuthFormContainer>
       </Page>
     )

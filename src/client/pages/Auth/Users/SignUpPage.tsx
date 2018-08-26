@@ -14,9 +14,9 @@ export default class SignUpPage extends React.Component<object, object> {
     return (
       <Page>
         <AuthFormContainer action={"/users/create"}>
-          <FormField title={"Email"} formName={"email"}/>
-          <FormField title={"Password"} formName={"password"}/>
-          <FormField title={"Re-enter Password"} formName={"password-reenter"}/>
+          <FormField title={"Email"} formName={"email"} type={"text"}/>
+          <FormField title={"Password"} formName={"password"} type={"password"}/>
+          <FormField title={"Re-enter Password"} formName={"password-reenter"} type={"password"}/>
         </AuthFormContainer>
       </Page>
     )
