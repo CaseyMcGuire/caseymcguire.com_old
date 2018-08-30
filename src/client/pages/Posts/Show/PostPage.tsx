@@ -17,7 +17,7 @@ export default class PostPage extends React.Component<{}, State> {
   }
 
   private getPostId() {
-    const url = window.location.href.split("/").filter((elem) => elem.length > 0);
+    const url = window.location.pathname.split("/");
     return parseInt(url[url.length - 1]);
   }
 

@@ -11,7 +11,7 @@ export default class EditPostPage extends React.Component {
   }
 
   private getPostId() {
-    const url = window.location.href.split("/");
+    const url = window.location.pathname.split("/");
     return parseInt(url[url.length - 2]);
   }
 
