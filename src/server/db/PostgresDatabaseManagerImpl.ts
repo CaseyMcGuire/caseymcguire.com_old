@@ -26,8 +26,8 @@ export default class PostgresDatabaseManagerImpl implements DatabaseManager {
 
   query(text: string, params: any[], callback: (err: Error | undefined, result?: any[]) => void) {
     this.pool.query(text, params, (err, result) => {
-      if (err) {
-        callback(err);
+      if (err || !result) {
+        return callback(err);
       }
       callback(undefined, result.rows);
     });

@@ -31,10 +31,12 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/posts", postController.index);
   app.get("/posts/new", isAdmin, postController.new);
   app.post("/posts/create", isAdmin, postController.create);
+  app.get("/posts/:id/edit", isAdmin, postController.edit);
+  app.get("/posts/:id", postController.show);
 }
 
 function isAdmin(req: Request, res: Response, next: NextFunction) {
-  if (req.isAuthenticated() && req.user.isAdmin) {
+  if (req.isAuthenticated() && req.user && req.user.isAdmin) {
     next();
   }
   else {

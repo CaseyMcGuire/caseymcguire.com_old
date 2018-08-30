@@ -38,7 +38,7 @@ export default class PostsIndexPage extends React.Component<object, State> {
           {
             this.state.posts.map((post) => {
               return (
-                <Post id={post.id} title={post.title} contents={post.contents} />
+                <Post key={post.id} id={post.id} title={post.title} contents={post.contents || ''} />
               )
             })
           }
