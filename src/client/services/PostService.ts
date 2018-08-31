@@ -1,6 +1,6 @@
 import PostDTO from "../../shared/PostDTO";
 
-export default class PostService {
+class PostService {
   getPost(id: number): Promise<PostDTO> {
     return fetch("/posts/" + id, {
       headers: {
@@ -11,3 +11,5 @@ export default class PostService {
     .then((data) => JSON.parse(data));
   }
 }
+
+export default new PostService();

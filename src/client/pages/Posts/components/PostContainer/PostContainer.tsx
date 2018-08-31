@@ -24,7 +24,7 @@ export default class PostContainer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    new PostService()
+    PostService
       .getPost(this.props.id)
       .then((post: PostDTO) => {
         this.setState({
