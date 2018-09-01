@@ -1,6 +1,7 @@
 import { Request, Response } from "express-serve-static-core";
 import * as passport from "passport";
 import {IVerifyOptions} from "passport-local";
+import {BUNDLE_BASE_PATH, MAIN_VIEW_NAME} from "../config/routes";
 
 
 export default class UserController {
@@ -10,7 +11,9 @@ export default class UserController {
   }
 
   public new(req: Request, res: Response) {
-    res.render("users/new");
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "users.new.bundle.js"
+    });
   }
 
   public create(req: Request, res: Response) {

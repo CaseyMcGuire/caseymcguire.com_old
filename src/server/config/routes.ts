@@ -8,6 +8,9 @@ import PostgresUserDaoImpl from "../dao/user/impl/PostgresUserDaoImpl";
 import DaoFactory, {DaoType} from "../dao/DaoFactory";
 import {PassportStatic} from "passport";
 
+export const BUNDLE_BASE_PATH = "/public/";
+export const MAIN_VIEW_NAME = "main";
+
 export default function configureRoutes(app: Application, passport: PassportStatic) {
   const postDao = DaoFactory.get<PostgresPostDaoImpl>(DaoType.POST);
   const userDao = DaoFactory.get<PostgresUserDaoImpl>(DaoType.USER);

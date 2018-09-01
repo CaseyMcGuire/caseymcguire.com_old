@@ -3,6 +3,7 @@ import { PostDao } from "../dao/post/PostDao";
 import PostsDTO from "../../shared/PostsDTO";
 import PostDTO from "../../shared/PostDTO";
 import Post from "../models/Post";
+import {BUNDLE_BASE_PATH, MAIN_VIEW_NAME} from "../config/routes";
 
 export default class PostController {
 
@@ -31,7 +32,6 @@ export default class PostController {
   }
 
   public show(req: Request, res: Response) {
-    console.log(req.params.id);
     this.postDao.findById(req.params.id, (err, post) => {
       // TODO: display 500 page
       if (err) {
@@ -46,13 +46,17 @@ export default class PostController {
         res.json(JSON.stringify(post));
       }
       else {
-        res.render("posts/show");
+        res.render(MAIN_VIEW_NAME, {
+          bundlePath: BUNDLE_BASE_PATH + "posts.show.bundle.js"
+        });
       }
     })
   }
 
   public new(req: Request, res: Response) {
-    res.render("posts/new");
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "posts.new.bundle.js"
+    });
   }
 
   public create(req: Request, res: Response) {
@@ -74,7 +78,9 @@ export default class PostController {
   }
 
   public edit(req: Request, res: Response) {
-    res.render("posts/edit");
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "posts.edit.bundle.js"
+    });
   }
 
   public update(req: Request, res: Response) {

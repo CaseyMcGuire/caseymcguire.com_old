@@ -1,4 +1,5 @@
 import { Request, Response } from "express-serve-static-core";
+import {BUNDLE_BASE_PATH, MAIN_VIEW_NAME} from "../config/routes";
 
 export default class HomeController {
 
@@ -9,14 +10,20 @@ export default class HomeController {
   }
 
   public index(req: Request, res: Response) {
-    res.render("home")
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "home.bundle.js"
+    })
   }
 
   public resume(req: Request, res: Response) {
-    res.render("resume");
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "resume.bundle.js"
+    });
   }
 
   public projects(req: Request, res: Response) {
-    res.render("projects/projects");
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "projects.bundle.js"
+    });
   }
 }

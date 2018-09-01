@@ -3,6 +3,7 @@ import {PassportStatic} from "passport";
 import {UserDao} from "../dao/user/UserDao";
 import {IVerifyOptions} from "passport-local";
 import User from "../models/User";
+import {BUNDLE_BASE_PATH, MAIN_VIEW_NAME} from "../config/routes";
 
 export default class SessionController {
 
@@ -14,7 +15,9 @@ export default class SessionController {
   }
 
   public new(req: Request, res: Response) {
-    res.render("sessions/new")
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "sessions.new.bundle.js"
+    })
   }
 
   public create(req: Request, res: Response) {
