@@ -59,7 +59,10 @@ function isLoggedIn(req: Request, res: Response, next: NextFunction) {
 }
 
 function ensureSecure(req: Request, res: Response, next: NextFunction) {
-  if(req.hostname === "localhost" || req.protocol === "https"){
+  // we have to check the 'x-forwarded-proto' header since heroku forwards the request
+  // from the load balancer over http.
+  // https://stackoverflow.com/a/32952582
+  if(req.hostname === "localhost" || req.headers['x-forwarded-proto'] === "https"){
     return next();
   }
   res.redirect('https://' + req.hostname + req.url);
