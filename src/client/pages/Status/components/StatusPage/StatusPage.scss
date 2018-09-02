@@ -1,0 +1,15 @@
+.status-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+
+  h1 {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+}

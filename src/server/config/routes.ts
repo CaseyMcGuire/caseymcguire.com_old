@@ -32,12 +32,21 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/", homeController.index);
   app.get("/resume", homeController.resume);
   app.get("/projects", homeController.projects);
+  app.get("/404", homeController.notFound);
+  app.get("/500", homeController.internalServerError);
 
   app.get("/posts", postController.index);
   app.get("/posts/new", isAdmin, postController.new);
   app.post("/posts/create", isAdmin, postController.create);
   app.get("/posts/:id/edit", isAdmin, postController.edit);
   app.get("/posts/:id", postController.show);
+
+
+  // this *must* occur below all other routes
+  // https://expressjs.com/en/starter/faq.html
+  app.use((req, res, next) => {
+    res.status(404).redirect("/404");
+  })
 }
 
 function isAdmin(req: Request, res: Response, next: NextFunction) {

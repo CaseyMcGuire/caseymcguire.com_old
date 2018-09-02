@@ -7,6 +7,8 @@ export default class HomeController {
     this.index = this.index.bind(this);
     this.resume = this.resume.bind(this);
     this.projects = this.projects.bind(this);
+    this.notFound = this.notFound.bind(this);
+    this.internalServerError = this.internalServerError.bind(this);
   }
 
   public index(req: Request, res: Response) {
@@ -25,5 +27,17 @@ export default class HomeController {
     res.render(MAIN_VIEW_NAME, {
       bundlePath: BUNDLE_BASE_PATH + "projects.bundle.js"
     });
+  }
+
+  public notFound(req: Request, res: Response) {
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "404.bundle.js"
+    });
+  }
+
+  public internalServerError(req: Request, res: Response) {
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "500.bundle.js"
+    })
   }
 }

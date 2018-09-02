@@ -19,8 +19,8 @@ export default class PostController {
   public index(req: Request, res: Response){
     this.postDao.getPosts((err, posts) => {
       if (err) {
-        // TODO: render 500 page
-        return res.json(err);
+        console.error(err);
+        return res.redirect("/500");
       }
       else {
         res.render("posts/index", {
@@ -33,13 +33,12 @@ export default class PostController {
 
   public show(req: Request, res: Response) {
     this.postDao.findById(req.params.id, (err, post) => {
-      // TODO: display 500 page
       if (err) {
-        return res.redirect("/");
+        console.error(err);
+        return res.redirect("/500");
       }
-      // TODO: display 404 page
       if (!post) {
-        return res.redirect("/notfound=true");
+        return res.redirect("/404");
       }
       const contentType = req.get("content-type") || "";
       if (contentType.indexOf("json") !== -1) {
@@ -65,8 +64,8 @@ export default class PostController {
     const user = req.user;
     this.postDao.savePost(user.id, post, (err) => {
       if (err) {
-        // TODO: 500 internal server error
-        res.redirect("/posts/error=true");
+        console.error(err);
+        res.redirect("/500");
       }
       else {
         res.redirect("/posts");
@@ -90,8 +89,8 @@ export default class PostController {
 
     this.postDao.updatePost(post, (err) => {
       if (err) {
-        // TODO: redirect to 500 page
-        return res.redirect("/?error=true");
+        console.error(err);
+        return res.redirect("/500");
       }
       return res.redirect("/posts/" + post.id);
     })
