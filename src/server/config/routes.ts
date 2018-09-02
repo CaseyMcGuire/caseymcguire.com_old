@@ -20,6 +20,8 @@ export default function configureRoutes(app: Application, passport: PassportStat
   const userController = new UserController();
   const sessionController = new SessionController(passport, userDao);
 
+  app.use(ensureSecure);
+
   app.get("/login", sessionController.new);
   app.post("/sessions/create", sessionController.create);
   app.post("/sessions/destroy", isLoggedIn, sessionController.destroy);
@@ -54,4 +56,11 @@ function isLoggedIn(req: Request, res: Response, next: NextFunction) {
   else {
     res.redirect("/");
   }
+}
+
+function ensureSecure(req: Request, res: Response, next: NextFunction) {
+  if(req.hostname === "localhost" || req.protocol === "https"){
+    return next();
+  }
+  res.redirect('https://' + req.hostname + req.url);
 }
