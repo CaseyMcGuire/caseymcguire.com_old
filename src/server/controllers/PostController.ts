@@ -43,7 +43,7 @@ export default class PostController {
       }
       const contentType = req.get("content-type") || "";
       if (contentType.indexOf("json") !== -1) {
-        res.json(JSON.stringify(post));
+        res.json(JSON.stringify(post.toPostDto()));
       }
       else {
         res.render(MAIN_VIEW_NAME, {
@@ -61,9 +61,7 @@ export default class PostController {
 
   public create(req: Request, res: Response) {
     const postDTO = req.body as PostDTO;
-    const post: Post = {
-      ...postDTO
-    };
+    const post: Post = Post.fromPostDto(postDTO);
     const user = req.user;
     this.postDao.savePost(user.id, post, (err) => {
       if (err) {
@@ -84,6 +82,18 @@ export default class PostController {
   }
 
   public update(req: Request, res: Response) {
+    const postDTO = req.body as PostDTO;
+    const post: Post = Post.fromPostDto(postDTO);
+    if (!post.id) {
+      return res.redirect("/");
+    }
 
+    this.postDao.updatePost(post, (err) => {
+      if (err) {
+        // TODO: redirect to 500 page
+        return res.redirect("/?error=true");
+      }
+      return res.redirect("/posts/" + post.id);
+    })
   }
 }

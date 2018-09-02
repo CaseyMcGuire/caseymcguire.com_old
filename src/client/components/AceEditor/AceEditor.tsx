@@ -51,7 +51,6 @@ export default class AceEditor extends React.Component<Props, State> {
       this.handleChange(editor.session.getValue());
     });
     editor.getSession().setValue(this.props.initialContent || "");
-
   }
 
   private getEditorId(): string {
@@ -60,9 +59,7 @@ export default class AceEditor extends React.Component<Props, State> {
 
   render() {
     return (
-      <div style={{height: this.props.height, width: this.props.width}} id={this.getEditorId()}>
-        {this.props.initialContent}
-      </div>
+      <div style={{height: this.props.height, width: this.props.width}} id={this.getEditorId()} />
     )
   }
 }
