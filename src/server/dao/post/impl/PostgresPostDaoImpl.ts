@@ -48,7 +48,7 @@ export default class PostgresPostDaoImpl implements PostDao {
   }
 
   updatePost(post: Post, callback: (err: Error | undefined) => void): void {
-    this.databaseManager.query(PostgresPostDaoImpl.UPDATE_POST, [post.title, post.contents, post.id], (err, result) => {
+    this.databaseManager.query(PostgresPostDaoImpl.UPDATE_POST, [post.title, post.contents, post.id], (err) => {
       callback(err);
     });
   }

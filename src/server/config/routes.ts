@@ -39,6 +39,7 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/posts/new", isAdmin, postController.new);
   app.post("/posts/create", isAdmin, postController.create);
   app.get("/posts/:id/edit", isAdmin, postController.edit);
+  app.post("/posts/update", postController.update);
   app.get("/posts/:id", postController.show);
 
 

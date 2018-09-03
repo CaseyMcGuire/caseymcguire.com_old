@@ -13,7 +13,7 @@ export default class NewPostPage extends React.Component<object, object> {
   render() {
     return (
       <Page>
-        <CreateEditPostContainer title={""} content={""}/>
+        <CreateEditPostContainer title={""} content={""} postPath={"/posts/create"}/>
       </Page>
     );
   }

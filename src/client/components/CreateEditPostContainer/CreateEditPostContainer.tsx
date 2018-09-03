@@ -5,15 +5,17 @@ import "./CreateEditPostContainer.scss";
 
 interface PropsAndState {
   title: string,
-  content: string
+  content: string,
 }
 
-export default class CreateEditPostContainer extends React.Component<PropsAndState, PropsAndState> {
+type Props = PropsAndState & { id?: number, postPath: string };
+
+export default class CreateEditPostContainer extends React.Component<Props, PropsAndState> {
 
   private static readonly TEXT_AREA_ID = "post-text-area";
   private static readonly POST_FORM_ID = "create-post-form";
 
-  constructor(props: PropsAndState) {
+  constructor(props: Props) {
     super(props);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.handleSubmitButtonClicked = this.handleSubmitButtonClicked.bind(this);
@@ -47,13 +49,14 @@ export default class CreateEditPostContainer extends React.Component<PropsAndSta
     return (
         <div className={"new-post-page-container"}>
           <div className={"post-form-container"}>
-            <form id={CreateEditPostContainer.POST_FORM_ID} action="/posts/create" method="post">
+            <form id={CreateEditPostContainer.POST_FORM_ID} action={this.props.postPath} method="post">
               <input name="title"
                      className={"title-input"}
                      type="text"
                      placeholder="Title"
                      onChange={(e) => this.handleTitleChange(e.target.value)}
                      value={this.state.title}/>
+              {this.props.id ? <input name="id" value={this.props.id} style={{display: "none"}} /> : <div />}
               <textarea name="contents" id={CreateEditPostContainer.TEXT_AREA_ID} />
             </form>
           </div>

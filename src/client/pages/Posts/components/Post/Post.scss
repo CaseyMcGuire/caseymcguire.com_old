@@ -2,16 +2,37 @@
 
 .post-container {
   width: $post-width + px;
+  padding-left: 7px;
 }
 
 .post-contents-container {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 135%;
   padding: 0px 5px;
+  list-style-position: inside;
+}
+
+.post-title-container {
+  border-bottom: #cccccc solid 1px;
+  margin-bottom: 10px;
+}
+
+.post-form-container {
+  margin-bottom: 5px;
+}
+
+.title-input {
+  width: $post-width + px;
+  height: 25px;
 }
 
 .post-contents-container {
-  p {
+
+  p, h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
+  }
+
+  li {
+    padding-left: 20px;
   }
 }

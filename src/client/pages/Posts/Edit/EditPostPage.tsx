@@ -17,7 +17,7 @@ export default class EditPostPage extends React.Component {
 
   private getComponent(title: string, contents: string) {
     return (
-      <CreateEditPostContainer title={title} content={contents}/>
+      <CreateEditPostContainer id={this.getPostId()} title={title} content={contents} postPath={"/posts/update"}/>
     );
   }
 
