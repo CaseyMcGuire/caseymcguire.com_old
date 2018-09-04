@@ -1,15 +1,15 @@
-@import url(../fonts/Computer_Modern/Bright/cmun-bright.css);
+/*@import url(../fonts/Computer_Modern/Bright/cmun-bright.css);
 @import url(../fonts/Computer_Modern/Bright_Semibold/cmun-bright-semibold.css);
 @import url(../fonts/Computer_Modern/Classical_Serif_Italic/cmun-classical-serif-italic.css);
 @import url(../fonts/Computer_Modern/Concrete/cmun-concrete.css);
 @import url(../fonts/Computer_Modern/Sans/cmun-sans.css);
-@import url(../fonts/Computer_Modern/Sans_Demi-Condensed/cmun-sans-demicondensed.css);
+@import url(../fonts/Computer_Modern/Sans_Demi-Condensed/cmun-sans-demicondensed.css);*/
 @import url(../fonts/Computer_Modern/Serif/cmun-serif.css);
-@import url(../fonts/Computer_Modern/Serif_Slanted/cmun-serif-slanted.css);
+/*@import url(../fonts/Computer_Modern/Serif_Slanted/cmun-serif-slanted.css);
 @import url(../fonts/Computer_Modern/Typewriter/cmun-typewriter.css);
 @import url(../fonts/Computer_Modern/Typewriter_Light/cmun-typewriter-light.css);
 @import url(../fonts/Computer_Modern/Typewriter_Variable/cmun-typewriter-variable.css);
-@import url(../fonts/Computer_Modern/Upright_Italic/cmun-upright-italic.css);
+@import url(../fonts/Computer_Modern/Upright_Italic/cmun-upright-italic.css);*/
 
 * {
     box-sizing: border-box;
