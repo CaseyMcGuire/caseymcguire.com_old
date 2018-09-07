@@ -20,3 +20,13 @@
 .technology-section-content-container {
   flex: 2;
 }
+
+@media only screen and (max-width: 600px) {
+  .technology-section-container {
+    flex-direction: column;
+  }
+
+  .technology-section-title-container {
+    margin: 3px 0px;
+  }
+}
