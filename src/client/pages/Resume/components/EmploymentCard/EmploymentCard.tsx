@@ -15,17 +15,18 @@ export default class EmploymentCard extends React.Component<Props, object> {
     return (
       <div className={"employment-card-container"}>
         <div className="header">
-          <div className="title-company-container">
+          <div className="company-employment-date-container">
             <div>
               <span className={"title"}>{title}</span>
             </div>
             <div>
-              <span className={"company-name"}>{companyName}</span>
-            </div>
-          </div>
-          <div className="date-location-container">
-            <div>
               <span className={"employment-date"}>{employmentDate}</span>
+            </div>
+
+          </div>
+          <div className="company-name-location-container">
+            <div>
+              <span className={"company-name"}>{companyName}</span>
             </div>
             <div className={"location-container"}>
               <span className={"location"}>{location}</span>

@@ -3,13 +3,12 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
   margin: 6px 0px;
 }
 
-.title-company-container, .date-location-container {
-  flex-direction: column;
+.company-employment-date-container, .company-name-location-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .location-container {
@@ -22,4 +21,10 @@
 
 .company-name, .location {
   font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+  .company-employment-date-container {
+    flex-direction: column;
+  }
 }
