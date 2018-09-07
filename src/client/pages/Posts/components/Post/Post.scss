@@ -1,7 +1,8 @@
 @import "../../../../common/variables";
 
 .post-container {
-  width: $post-width + px;
+  width: 90%;
+  max-width: $post-width + px;
   padding-left: 7px;
 }
 
