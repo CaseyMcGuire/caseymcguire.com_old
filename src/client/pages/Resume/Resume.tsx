@@ -68,9 +68,4 @@ class ResumePage extends React.Component<object, object> {
   }
 }
 
-window.onload = () => {
-  ReactDOM.render(
-    <ResumePage />,
-    document.getElementById("main")
-  );
-}
+ReactDOM.render(<ResumePage />, document.getElementById("main"));
