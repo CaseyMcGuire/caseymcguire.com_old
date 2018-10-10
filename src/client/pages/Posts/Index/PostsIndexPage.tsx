@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import Page from "../../Page/Page";
 import Post from "../components/Post/Post";
 import PostDTO from "../../../../shared/PostDTO";
+import DataService from "../../../services/DataService";
 
 interface State {
   posts: PostDTO[]
@@ -19,16 +20,7 @@ export default class PostsIndexPage extends React.Component<object, State> {
   }
 
   private getInitialData(): State {
-    // we embed initial data in the DOM
-    const data = document.getElementById("params");
-    let initialState;
-    if (data) {
-      initialState = JSON.parse(data.getAttribute("data-initial-data") || '{}');
-    }
-    else {
-      initialState = [];
-    }
-    return initialState;
+    return DataService.getInitialData() as State;
   }
 
   render() {

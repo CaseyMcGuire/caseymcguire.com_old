@@ -23,9 +23,9 @@ export default class PostController {
         return res.redirect("/500");
       }
       else {
-        res.render("posts/index", {
-          // TODO: we should not be referencing server models on the client
-          posts: JSON.stringify(new PostsDTO(posts as PostDTO[]))
+        res.render(MAIN_VIEW_NAME, {
+          bundlePath: BUNDLE_BASE_PATH + "posts.index.bundle.js",
+          data: JSON.stringify(new PostsDTO(posts as PostDTO[]))
         })
       }
     });
@@ -40,15 +40,11 @@ export default class PostController {
       if (!post) {
         return res.redirect("/404");
       }
-      const contentType = req.get("content-type") || "";
-      if (contentType.indexOf("json") !== -1) {
-        res.json(JSON.stringify(post.toPostDto()));
-      }
-      else {
-        res.render(MAIN_VIEW_NAME, {
-          bundlePath: BUNDLE_BASE_PATH + "posts.show.bundle.js"
-        });
-      }
+
+      res.render(MAIN_VIEW_NAME, {
+        bundlePath: BUNDLE_BASE_PATH + "posts.show.bundle.js",
+        data: JSON.stringify(post)
+      });
     })
   }
 

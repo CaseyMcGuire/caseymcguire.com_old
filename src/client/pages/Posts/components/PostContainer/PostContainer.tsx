@@ -1,11 +1,9 @@
 import * as React from "react";
-import PostDTO from "../../../../../shared/PostDTO";
-import PostService from "../../../../services/PostService";
+import DataService from "../../../../services/DataService";
 
 interface State {
   title: string,
   contents: string,
-  isLoaded: boolean
 }
 
 interface Props {
@@ -17,35 +15,19 @@ export default class PostContainer extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      title: '',
-      contents: '',
-      isLoaded: false
+      ...this.getInitialData()
     }
   }
 
-  componentDidMount() {
-    PostService
-      .getPost(this.props.id)
-      .then((post: PostDTO) => {
-        this.setState({
-          title: post.title,
-          contents: post.contents,
-          isLoaded: true
-        })
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+  private getInitialData(): State {
+    return DataService.getInitialData() as State;
   }
 
   render() {
     return (
       <div>
         {
-          this.state.isLoaded ?
-            this.props.getComponent(this.state.title, this.state.contents)
-            :
-            <div>loading...</div>
+          this.props.getComponent(this.state.title, this.state.contents)
         }
       </div>
     )

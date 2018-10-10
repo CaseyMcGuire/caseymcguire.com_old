@@ -3,6 +3,7 @@ import Post from "../components/Post/Post";
 import Page from "../../Page/Page";
 import PostContainer from "../components/PostContainer/PostContainer";
 import * as ReactDOM from "react-dom";
+import DataService from "../../../services/DataService";
 
 interface State {
   title: string,
@@ -14,6 +15,14 @@ export default class PostPage extends React.Component<{}, State> {
   constructor(props: object) {
     super(props);
     this.getComponent = this.getComponent.bind(this);
+    const initialData = this.getInitialData();
+    this.state = {
+      ...initialData
+    }
+  }
+
+  private getInitialData(): State {
+    return DataService.getInitialData() as State;
   }
 
   private getPostId() {
