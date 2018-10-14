@@ -13,6 +13,7 @@
   // of the viewport that click events pass through.
   opacity: 0.0;
   pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
 
   &.side-menu-glass-visible {
     opacity: 0.8;
