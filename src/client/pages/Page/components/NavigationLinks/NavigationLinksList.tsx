@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./NavigationLinksList.scss";
 
 export default class NavigationLinksList extends React.Component {
   render() {
