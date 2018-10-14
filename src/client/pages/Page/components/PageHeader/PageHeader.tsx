@@ -2,7 +2,11 @@ import * as React from "react";
 import "./PageHeader.scss";
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-export default class PageHeader extends React.Component<object, object> {
+interface Props {
+  onMenuButtonClick: () => void
+}
+
+export default class PageHeader extends React.Component<Props, object> {
 
   render() {
     return (
@@ -10,7 +14,7 @@ export default class PageHeader extends React.Component<object, object> {
         <div>
           <span className={"name"}>Casey McGuire</span>
         </div>
-        <NavigationBar/>
+        <NavigationBar onMenuButtonClick={this.props.onMenuButtonClick} />
       </div>
     )
   }

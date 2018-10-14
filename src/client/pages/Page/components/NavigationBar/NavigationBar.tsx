@@ -1,26 +1,24 @@
 import * as React from "react";
 import "./NavigationBar.scss";
+import MenuButton from "../MenuButton/MenuButton";
+import NavigationLinksList from "../NavigationLinks/NavigationLinksList";
 
-export default class NavigationBar extends React.Component<object, object> {
+interface Props {
+  onMenuButtonClick: () => void
+}
+
+export default class NavigationBar extends React.Component<Props, object> {
 
   render() {
     return (
       <div className={"navigation-bar-container"}>
-        <ul className={"navigation-bar-items"}>
-          <NavigationBarItem name={"Home"} link={"/"} />
-          <NavigationBarItem name={"Resume"} link={"/resume"} />
-          <NavigationBarItem name={"Blog"} link={"/posts"} />
-          <NavigationBarItem name={"Projects"} link={"/projects"} />
-        </ul>
+        <div className={"navigation-bar-links-container"}>
+          <NavigationLinksList />
+        </div>
+        <div className={"menu-button-container"}>
+          <MenuButton onClick={this.props.onMenuButtonClick} />
+        </div>
       </div>
     );
   }
-}
-
-function NavigationBarItem(props: {name: string, link: string}) {
-  return (
-    <li className={"nav-bar-item"}>
-      <a className={"nav-bar-link"} href={props.link}>{props.name}</a>
-    </li>
-  );
 }
