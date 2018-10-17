@@ -16,9 +16,10 @@
     "copy-fonts": "node_modules/gulp/bin/gulp.js copy-fonts",
     "watch-dev": "concurrently -k npm:watch-client npm:watch-server npm:watch-handlebars npm:watch-assets",
     "start-server": "node_modules/nodemon/bin/nodemon.js --watch dist/server --watch dist/shared dist/server/index.js",
+    "setup-database": "bin/setup_database.sh && npm run run-migrations",
     "db-migrate": "node_modules/db-migrate/bin/db-migrate --config ./src/server/config/database.json --migrations-dir src/server/db/migrations",
-    "setup-database": "npm run db-migrate up",
-    "build-prod": "npm install && npm run build-client && npm run build-server && npm run copy-static-files && npm run setup-database",
+    "run-migrations": "npm run db-migrate up",
+    "build-prod": "npm install && npm run build-client && npm run build-server && npm run copy-static-files && npm run run-migrations",
     "heroku-postbuild": "npm run build-prod"
   },
   "author": "Casey McGuire",
