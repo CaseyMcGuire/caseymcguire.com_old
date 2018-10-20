@@ -5,6 +5,7 @@ import * as ReactDOM from "react-dom";
 import "./LoginPage.scss"
 import FormField from "../components/InputField/InputField";
 import AuthFormContainer from "../components/AuthFormContainer/AuthFormContainer";
+import CsrfToken from "../../../components/CsrfToken/CsrfToken";
 
 export default class LoginPage extends React.Component<{}, {}> {
   constructor(props: any) {
@@ -15,6 +16,7 @@ export default class LoginPage extends React.Component<{}, {}> {
     return (
       <Page>
         <AuthFormContainer action={"/sessions/create"}>
+          <CsrfToken />
           <FormField title={"Email"} formName={"email"} type={"text"} />
           <FormField title={"Password"} formName={"password"} type={"password"} />
         </AuthFormContainer>

@@ -32,6 +32,7 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/", homeController.index);
   app.get("/resume", homeController.resume);
   app.get("/projects", homeController.projects);
+  app.get("/403", homeController.forbidden);
   app.get("/404", homeController.notFound);
   app.get("/500", homeController.internalServerError);
 
@@ -39,9 +40,17 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/posts/new", isAdmin, postController.new);
   app.post("/posts/create", isAdmin, postController.create);
   app.get("/posts/:id/edit", isAdmin, postController.edit);
-  app.post("/posts/update", postController.update);
+  app.post("/posts/update", isAdmin, postController.update);
   app.get("/posts/:id", postController.show);
 
+
+  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    // express adds this if the CSRF token was tampered with.
+    if (err.code !== "EBADCSRFTOKEN") {
+      return next(err);
+    }
+    return res.status(403).redirect("/403")
+  });
 
   // this *must* occur below all other routes
   // https://expressjs.com/en/starter/faq.html

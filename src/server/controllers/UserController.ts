@@ -12,14 +12,15 @@ export default class UserController {
 
   public new(req: Request, res: Response) {
     res.render(MAIN_VIEW_NAME, {
-      bundlePath: BUNDLE_BASE_PATH + "users.new.bundle.js"
+      bundlePath: BUNDLE_BASE_PATH + "users.new.bundle.js",
+      csrfToken: req.csrfToken()
     });
   }
 
   public create(req: Request, res: Response) {
     passport.authenticate("signup", (err: Error, info: IVerifyOptions) => {
       if (err) {
-        res.redirect("/signup?error=true");
+        return res.redirect("/signup?error=true");
       }
       return res.redirect("/");
     })(req, res);

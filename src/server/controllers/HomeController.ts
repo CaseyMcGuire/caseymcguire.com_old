@@ -9,6 +9,7 @@ export default class HomeController {
     this.projects = this.projects.bind(this);
     this.notFound = this.notFound.bind(this);
     this.internalServerError = this.internalServerError.bind(this);
+    this.forbidden = this.forbidden.bind(this);
   }
 
   public index(req: Request, res: Response) {
@@ -38,6 +39,12 @@ export default class HomeController {
   public internalServerError(req: Request, res: Response) {
     res.render(MAIN_VIEW_NAME, {
       bundlePath: BUNDLE_BASE_PATH + "500.bundle.js"
+    })
+  }
+
+  public forbidden(req: Request, res: Response) {
+    res.render(MAIN_VIEW_NAME, {
+      bundlePath: BUNDLE_BASE_PATH + "403.bundle.js"
     })
   }
 }

@@ -16,7 +16,8 @@ export default class SessionController {
 
   public new(req: Request, res: Response) {
     res.render(MAIN_VIEW_NAME, {
-      bundlePath: BUNDLE_BASE_PATH + "sessions.new.bundle.js"
+      bundlePath: BUNDLE_BASE_PATH + "sessions.new.bundle.js",
+      csrfToken : req.csrfToken()
     })
   }
 

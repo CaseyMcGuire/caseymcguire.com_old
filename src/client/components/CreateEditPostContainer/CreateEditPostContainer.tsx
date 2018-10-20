@@ -2,6 +2,7 @@ import * as React from "react";
 import Post from "../../pages/Posts/components/Post/Post";
 import AceEditor from "../AceEditor/AceEditor";
 import "./CreateEditPostContainer.scss";
+import CsrfToken from "../CsrfToken/CsrfToken";
 
 interface PropsAndState {
   title: string,
@@ -50,6 +51,7 @@ export default class CreateEditPostContainer extends React.Component<Props, Prop
         <div className={"new-post-page-container"}>
           <div className={"post-form-container"}>
             <form id={CreateEditPostContainer.POST_FORM_ID} action={this.props.postPath} method="post">
+              <CsrfToken/>
               <input name="title"
                      className={"title-input"}
                      type="text"

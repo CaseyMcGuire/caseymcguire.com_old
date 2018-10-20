@@ -50,7 +50,8 @@ export default class PostController {
 
   public new(req: Request, res: Response) {
     res.render(MAIN_VIEW_NAME, {
-      bundlePath: BUNDLE_BASE_PATH + "posts.new.bundle.js"
+      bundlePath: BUNDLE_BASE_PATH + "posts.new.bundle.js",
+      csrfToken: req.csrfToken()
     });
   }
 
@@ -72,7 +73,8 @@ export default class PostController {
 
   public edit(req: Request, res: Response) {
     res.render(MAIN_VIEW_NAME, {
-      bundlePath: BUNDLE_BASE_PATH + "posts.edit.bundle.js"
+      bundlePath: BUNDLE_BASE_PATH + "posts.edit.bundle.js",
+      csrfToken: req.csrfToken()
     });
   }
 

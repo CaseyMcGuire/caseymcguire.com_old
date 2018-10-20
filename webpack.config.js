@@ -11,6 +11,7 @@ module.exports = {
     'posts.show': './src/client/pages/Posts/Show/PostPage.tsx',
     'sessions.new': './src/client/pages/Auth/Sessions/LoginPage.tsx',
     'users.new': './src/client/pages/Auth/Users/SignUpPage.tsx',
+    '403': './src/client/pages/Status/403/ForbiddenPage.tsx',
     '404': './src/client/pages/Status/404/NotFoundPage.tsx',
     '500': './src/client/pages/Status/500/InternalServerErrorPage.tsx'
   },
