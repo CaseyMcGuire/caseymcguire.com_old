@@ -42,7 +42,6 @@
     "pg": "^7.4.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "sanitize-html": "^1.19.1",
     "typescript": "^2.9.1"
   },
   "devDependencies": {
