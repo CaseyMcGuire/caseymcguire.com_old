@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node dist/server/index.js",
     "clean": "node_modules/trash-cli/cli.js dist",
-    "build-client": "node_modules/webpack-cli/bin/cli.js",
+    "build-client": "node_modules/webpack-cli/bin/cli.js --config webpack.production.js",
     "build-server": "node_modules/typescript/bin/tsc",
     "copy-static-files": "node_modules/gulp/bin/gulp.js copy-static-files",
-    "watch-client": "node_modules/webpack-cli/bin/cli.js -w --mode=development",
+    "watch-client": "node_modules/webpack-cli/bin/cli.js --config webpack.development.js",
     "watch-server": "node_modules/typescript/bin/tsc -w",
     "watch-handlebars": "node_modules/gulp/bin/gulp.js watch-handlebars",
     "watch-assets": "node_modules/gulp/bin/gulp.js watch-assets",
@@ -71,6 +71,7 @@
     "trash-cli": "^1.4.0",
     "ts-loader": "^4.4.2",
     "webpack": "^4.14.0",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-merge": "^4.1.4"
   }
 }
