@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as marked from "marked";
 import "./Post.scss";
+import * as sanitizeHtml from "sanitize-html";
 
 interface Props {
   id?: number,
@@ -9,6 +10,10 @@ interface Props {
 }
 
 export default class Post extends React.Component<Props,{}> {
+
+  constructor(props: Props) {
+    super(props);
+  }
 
   render() {
     const {
@@ -22,7 +27,7 @@ export default class Post extends React.Component<Props,{}> {
           <h1 className={"post-title"}>{title}</h1>
         </div>
         <div className={"post-contents-container"}
-             dangerouslySetInnerHTML={{__html: marked(contents)}} />
+             dangerouslySetInnerHTML={{__html: sanitizeHtml(marked(contents))}} />
       </div>
     );
   }

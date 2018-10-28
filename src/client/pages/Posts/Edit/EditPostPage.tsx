@@ -31,9 +31,4 @@ export default class EditPostPage extends React.Component {
 
 }
 
-window.onload = () => {
-  ReactDOM.render(
-    <EditPostPage />,
-    document.getElementById("main")
-  );
-};
+ReactDOM.render(<EditPostPage />, document.getElementById("main"));
