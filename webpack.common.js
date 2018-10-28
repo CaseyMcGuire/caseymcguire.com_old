@@ -15,9 +15,6 @@ module.exports = {
     '404': './src/client/pages/Status/404/NotFoundPage.tsx',
     '500': './src/client/pages/Status/500/InternalServerErrorPage.tsx'
   },
-  watchOptions: {
-    poll: true
-  },
   module: {
     rules: [
       {
