@@ -9,8 +9,12 @@ import configurePassport from "./config/passport";
 const app = express();
 const csrfProtection: express.RequestHandler = csrf({ cookie: true });
 
+const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
+const layoutFile = isDevelopment ? "main.development.handlebars" : "main.production.handlebars";
+
 app.engine('handlebars', expressHandlebars({
-  defaultLayout: "main",
+  defaultLayout: layoutFile,
   layoutsDir: __dirname + "/views/layouts"
 }));
 app.set('view engine', 'handlebars');

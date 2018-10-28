@@ -35,7 +35,9 @@ module.exports = {
     ]
   },
   externals: {
-    'sanitize-html' : 'sanitizeHtml'
+    'sanitize-html' : 'sanitizeHtml',
+    'react': 'React',
+    'react-dom': 'ReactDOM'
   },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
