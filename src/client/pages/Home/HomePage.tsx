@@ -15,15 +15,22 @@ class HomePage extends React.Component {
           <div className={"info-container"}>
             <h3>Software Development Engineer in Bellevue, WA.</h3>
             <div className={"picture-container"}>
-              <a href="https://www.linkedin.com/in/casey-mcguire-68966891/">
-                <img className={"linkedin-picture"} src="/public/assets/images/linkedin_picture.png" />
-              </a>
+              <SocialMediaIcon src={"/public/assets/images/linkedin_picture.png"} link={"https://www.linkedin.com/in/casey-mcguire-68966891/"} />
+              <SocialMediaIcon src={"/public/assets/images/github_picture.png"} link={"https://github.com/CaseyMcGuire"} />
             </div>
           </div>
         </div>
       </Page>
     );
   }
+}
+
+function SocialMediaIcon(props: {src: string, link: string}) {
+  return (
+    <a href={props.link}>
+      <img className={"social-media-icon"} src={props.src} />
+    </a>
+  )
 }
 
 window.onload = () => {
