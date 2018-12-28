@@ -4,13 +4,14 @@ import Page from "../../Page/Page";
 import PostContainer from "../components/PostContainer/PostContainer";
 import * as ReactDOM from "react-dom";
 import DataService from "../../../services/DataService";
+import PostPage from "../components/PostPage/PostPage";
 
 interface State {
   title: string,
   contents: string
 }
 
-export default class PostPage extends React.Component<{}, State> {
+export default class SinglePostPage extends React.Component<{}, State> {
 
   constructor(props: object) {
     super(props);
@@ -38,16 +39,16 @@ export default class PostPage extends React.Component<{}, State> {
 
   render() {
     return (
-      <Page>
+      <PostPage>
         <PostContainer getComponent={this.getComponent} id={this.getPostId()}/>
-      </Page>
+      </PostPage>
     )
   }
 }
 
 window.onload = () => {
   ReactDOM.render(
-    <PostPage />,
+    <SinglePostPage />,
     document.getElementById("main")
   );
 };

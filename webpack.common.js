@@ -8,7 +8,7 @@ module.exports = {
     'posts.index': './src/client/pages/Posts/Index/PostsIndexPage.tsx',
     'posts.new': './src/client/pages/Posts/New/NewPostPage.tsx',
     'posts.edit': './src/client/pages/Posts/Edit/EditPostPage.tsx',
-    'posts.show': './src/client/pages/Posts/Show/PostPage.tsx',
+    'posts.show': './src/client/pages/Posts/Show/SinglePostPage.tsx',
     'sessions.new': './src/client/pages/Auth/Sessions/LoginPage.tsx',
     'users.new': './src/client/pages/Auth/Users/SignUpPage.tsx',
     '403': './src/client/pages/Status/403/ForbiddenPage.tsx',

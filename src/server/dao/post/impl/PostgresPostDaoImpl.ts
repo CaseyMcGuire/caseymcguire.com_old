@@ -5,15 +5,15 @@ import DatabaseManager from "../../../db/DatabaseManager";
 
 export default class PostgresPostDaoImpl implements PostDao {
 
-  private static readonly GET_ALL_POSTS = "SELECT * FROM posts ORDER BY id ASC";
+  private static readonly GET_POSTS = "SELECT * FROM posts ORDER BY id ASC LIMIT $1 OFFSET $2";
   private static readonly CREATE_NEW_POST = "INSERT INTO posts (user_id, title, contents) VALUES ($1, $2, $3)";
   private static readonly GET_POST_BY_ID = "SELECT * FROM posts where id = $1 LIMIT 1";
   private static readonly UPDATE_POST = "UPDATE posts SET title = $1, contents = $2 WHERE id = $3;"
 
   constructor(private readonly databaseManager: DatabaseManager) {}
 
-  getPosts(callback: (err?: Error, posts?: Post[]) => void): void {
-    this.databaseManager.query(PostgresPostDaoImpl.GET_ALL_POSTS, [], (err, result) => {
+  getPosts(numPosts: number, numPostOffset: number, callback: (err?: Error, posts?: Post[]) => void): void {
+    this.databaseManager.query(PostgresPostDaoImpl.GET_POSTS, [numPosts, numPostOffset], (err, result) => {
       if (err) {
         return callback(err);
       }
