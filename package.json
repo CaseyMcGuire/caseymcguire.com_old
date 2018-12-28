@@ -1,6 +1,10 @@
 {
   "name": "caseymcguire.com",
   "version": "1.0.0",
+  "engines": {
+    "node": "9.5.0",
+    "npm": "5.6.0"
+  },
   "description": "My website",
   "main": "index.js",
   "scripts": {
