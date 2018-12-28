@@ -7,7 +7,9 @@ export default class NavigationLinksList extends React.Component {
         <NavigationLink name={"Home"} link={"/"}/>
         <NavigationLink name={"Resume"} link={"/resume"}/>
         <NavigationLink name={"Blog"} link={"/posts"}/>
-        <NavigationLink name={"Projects"} link={"/projects"}/>
+        {
+         // <NavigationLink name={"Projects"} link={"/projects"}/>
+        }
         <NavigationLink name={"Contact"} link={"mailto:caseyjaymcguire@gmail.com"} />
       </ul>
     );
