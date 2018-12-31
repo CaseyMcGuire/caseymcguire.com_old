@@ -5,11 +5,17 @@ import * as cookieParser from "cookie-parser";
 import * as passport from "passport";
 import * as csrf from "csurf";
 import configurePassport from "./config/passport";
+import * as dotenv from "dotenv";
 
 const app = express();
 const csrfProtection: express.RequestHandler = csrf({ cookie: true });
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
+// if we're in development, load our environment variables from the .env file
+if (isDevelopment) {
+  dotenv.config();
+}
 
 const layoutFile = isDevelopment ? "main.development.handlebars" : "main.production.handlebars";
 

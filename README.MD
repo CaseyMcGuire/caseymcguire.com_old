@@ -1,5 +1,5 @@
 #### Setup
-You must have Postgresql and Node installed and the following environment variables must be set:
+You must have Postgresql and Node installed and have a `.env` file in the root project directory with the following environment variables set:
 
 
 - SESSION_SECRET
