@@ -23,8 +23,11 @@ export default class DaoFactory {
   }
 
   public static get<DAO extends Dao>(daoType: DaoType): DAO {
+    // lazily initialize so we can ensure our environment variables are setup
+    if (!DaoFactory.daos) {
+      DaoFactory.initialize();
+    }
     return this.daos.get(daoType) as DAO;
   }
 }
 
-DaoFactory.initialize();
