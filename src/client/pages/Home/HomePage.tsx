@@ -13,7 +13,7 @@ class HomePage extends React.Component {
             <img className={"home-page-picture"} src="/public/assets/images/home_picture.jpeg"/>
           </div>
           <div className={"info-container"}>
-            <h3>Software Development Engineer in Bellevue, WA.</h3>
+            <h3>Software Development Engineer in Seattle, WA.</h3>
             <div className={"picture-container"}>
               <SocialMediaIcon src={"/public/assets/images/linkedin_picture.png"} link={"https://www.linkedin.com/in/casey-mcguire-68966891/"} />
               <SocialMediaIcon src={"/public/assets/images/github_picture.png"} link={"https://github.com/CaseyMcGuire"} />

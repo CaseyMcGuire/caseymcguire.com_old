@@ -15,10 +15,16 @@ class ResumePage extends React.Component<object, object> {
         <div className={"resume-container"}>
           <Section title={"EMPLOYMENT"}>
             <EmploymentCard
+              title={"Software Engineer"}
+              companyName={"Facebook"}
+              location={"Seattle, WA"}
+              employmentDate={"January 2019 - Present"}
+              description={[]}/>
+            <EmploymentCard
               title={"Software Development Engineer II"}
               companyName={"Apptio, Inc."}
               location={"Bellevue, WA"}
-              employmentDate={"October 2016 - Present"}
+              employmentDate={"October 2016 - December 2018"}
               description={[
                 "Assisted in the design and complete rewrite of a feature which allows users to visualize how money is spent throughout their IT organization.",
                 "Led the design and implementation of a feature that allows users to see how money is either over- and/or under-allocated in their IT financial models.",
@@ -54,7 +60,7 @@ class ResumePage extends React.Component<object, object> {
           </Section>
           <Section title={"TECHNOLOGIES"}>
             <TechnologyInfoCard programmingLanguages={["Java", "JavaScript", "TypeScript"]} 
-                                technologiesAndTools={["Google Web Toolkit", "ReactJS", "React Native", "Redux", "HTML", "CSS", "Git", "Mercurial"]}/>
+                                technologiesAndTools={["ReactJS", "React Native", "Redux", "HTML", "CSS", "Git", "Mercurial"]}/>
           </Section>
           <Section title={"EDUCATION"}>
             <EducationCard universityName={"University of Puget Sound"}
