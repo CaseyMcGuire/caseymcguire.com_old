@@ -65,7 +65,7 @@ function isAdmin(req: Request, res: Response, next: NextFunction) {
     next();
   }
   else {
-    res.redirect("/");
+    res.status(403).redirect("/403");
   }
 }
 
@@ -74,7 +74,7 @@ function isLoggedIn(req: Request, res: Response, next: NextFunction) {
     next();
   }
   else {
-    res.redirect("/");
+    res.status(403).redirect("/403");
   }
 }
 

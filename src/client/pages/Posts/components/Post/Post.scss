@@ -11,6 +11,7 @@
   line-height: 135%;
   padding: 0px 5px;
   list-style-position: inside;
+  margin: 0px 5px;
 }
 
 .post-title-container {
@@ -35,5 +36,11 @@
 
   li {
     padding-left: 20px;
+  }
+
+  blockquote {
+    margin: 10px;
+    border-left: #cccccc solid 3px;
+    padding-left: 7px;
   }
 }
