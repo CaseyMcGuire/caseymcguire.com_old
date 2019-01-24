@@ -24,13 +24,7 @@ export default class PostContainer extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <div>
-        {
-          this.props.getComponent(this.state.title, this.state.contents)
-        }
-      </div>
-    )
+    return this.props.getComponent(this.state.title, this.state.contents);
   }
 
 }

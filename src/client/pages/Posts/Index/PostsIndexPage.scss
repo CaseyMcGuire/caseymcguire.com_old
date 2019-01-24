@@ -8,6 +8,12 @@
   width: $post-width + px;
 }
 
+@media only screen and (max-width: 600px) {
+  .pagination-panel {
+    width: 300px;
+  }
+}
+
 .posts-container {
   display: flex;
   flex-direction: column;
