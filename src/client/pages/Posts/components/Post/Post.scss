@@ -2,15 +2,6 @@
 
 .post-container {
   max-width: $post-width + px;
-  padding-left: 7px;
-}
-
-.post-contents-container {
-  font-size: 17px;
-  line-height: 135%;
-  padding: 0px 5px;
-  list-style-position: inside;
-  margin: 0px 5px;
 }
 
 .post-title-container {
@@ -28,6 +19,11 @@
 }
 
 .post-contents-container {
+  font-size: 17px;
+  line-height: 135%;
+  padding: 0px 5px;
+  list-style-position: inside;
+
 
   p, h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;

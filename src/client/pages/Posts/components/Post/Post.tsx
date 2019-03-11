@@ -3,11 +3,11 @@ import * as marked from "marked";
 import "./Post.scss";
 import * as sanitizeHtml from "sanitize-html";
 
-interface Props {
+type Props = Readonly<{
   id?: number,
   title: string,
   contents: string
-}
+}>
 
 export default class Post extends React.Component<Props,{}> {
 
