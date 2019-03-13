@@ -83,8 +83,8 @@ export default class PostController {
     const post: Post = Post.fromPostDto(postDTO);
     const user = req.user;
     try {
-      await this.postDao.savePost(user.id, post);
-      res.redirect("/posts");
+      const id = await this.postDao.savePost(user.id, post);
+      res.redirect("/posts/" + id);
     } catch(e) {
       res.redirect("/500");
     }
