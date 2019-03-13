@@ -17,7 +17,7 @@ export default class PostController {
     this.show = this.show.bind(this);
   }
 
-  public index(req: Request, res: Response){
+  public async index(req: Request, res: Response){
     let pageNumber = NumberUtil.parseIntOrNum(req.params.id, 1);
     if (pageNumber <= 0) {
       pageNumber = 1;
@@ -27,16 +27,12 @@ export default class PostController {
     const numPostOffset = 10 * (pageNumber - 1);
 
     // The UI is 1-based so we need to account for that here
-    this.postDao.getPosts(11, numPostOffset, (err, posts) => {
-      if (err) {
-        console.error(err);
-        return res.redirect("/500");
-      }
+    try {
+      let posts = await this.postDao.getPosts(11, numPostOffset);
 
       if (!posts || posts.length === 0) {
         return res.redirect("/404");
       }
-
       // we grab 11 posts and use the presence of an 11th post to determine whether we should
       // light up the "next page" button in the UI
       let hasNextPage = false;
@@ -53,24 +49,26 @@ export default class PostController {
           pageNumber
         }),
       })
-    });
+
+    } catch(e) {
+      res.redirect("/500");
+    }
   }
 
-  public show(req: Request, res: Response) {
-    this.postDao.findById(req.params.id, (err, post) => {
-      if (err) {
-        console.error(err);
-        return res.redirect("/500");
-      }
+  public async show(req: Request, res: Response) {
+    try {
+      const post = await this.postDao.findById(req.params.id);
       if (!post) {
         return res.redirect("/404");
       }
-
       res.render(MAIN_VIEW_NAME, {
         bundlePath: BUNDLE_BASE_PATH + "posts.show.bundle.js",
         data: JSON.stringify(post)
       });
-    })
+    }
+    catch (e) {
+      res.redirect("/500");
+    }
   }
 
   public new(req: Request, res: Response) {
@@ -80,42 +78,43 @@ export default class PostController {
     });
   }
 
-  public create(req: Request, res: Response) {
+  public async create(req: Request, res: Response) {
     const postDTO = req.body as PostDTO;
     const post: Post = Post.fromPostDto(postDTO);
     const user = req.user;
-    this.postDao.savePost(user.id, post, (err) => {
-      if (err) {
-        console.error(err);
-        res.redirect("/500");
-      }
-      else {
-        res.redirect("/posts");
-      }
-    })
-
+    try {
+      await this.postDao.savePost(user.id, post);
+      res.redirect("/posts");
+    } catch(e) {
+      res.redirect("/500");
+    }
   }
 
-  public edit(req: Request, res: Response) {
-    res.render(MAIN_VIEW_NAME, {
-      bundlePath: BUNDLE_BASE_PATH + "posts.edit.bundle.js",
-      csrfToken: req.csrfToken()
-    });
+  public async edit(req: Request, res: Response) {
+    try {
+      const post = await this.postDao.findById(req.params.id);
+      res.render(MAIN_VIEW_NAME, {
+        bundlePath: BUNDLE_BASE_PATH + "posts.edit.bundle.js",
+        csrfToken: req.csrfToken(),
+        data: JSON.stringify(post)
+      });
+    } catch (e) {
+      res.redirect("/500");
+    }
   }
 
-  public update(req: Request, res: Response) {
+  public async update(req: Request, res: Response) {
     const postDTO = req.body as PostDTO;
     const post: Post = Post.fromPostDto(postDTO);
     if (!post.id) {
       return res.redirect("/");
     }
 
-    this.postDao.updatePost(post, (err) => {
-      if (err) {
-        console.error(err);
-        return res.redirect("/500");
-      }
-      return res.redirect("/posts/" + post.id);
-    })
+    try {
+      await this.postDao.updatePost(post);
+      res.redirect("/posts/" + post.id)
+    } catch(e) {
+      res.redirect("/500");
+    }
   }
 }

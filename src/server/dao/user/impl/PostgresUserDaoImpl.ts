@@ -11,31 +11,39 @@ export default class PostgresUserDaoImpl implements UserDao {
 
   constructor(private readonly databaseManager: DatabaseManager) {}
 
-  getUserByEmail(email: string, callback: (err: Error | undefined, user?: User) => void): void {
-    this.databaseManager.query(PostgresUserDaoImpl.GET_USER_BY_EMAIL, [email], (err: Error | undefined, result?: any[]) => {
-      return this.handleUserResult(callback, err, result);
-    });
-  }
-
-  getUserById(id: number, callback: (err: (Error | undefined), user?: User) => void): void {
-    this.databaseManager.query(PostgresUserDaoImpl.GET_USER_BY_ID, [id], (err: Error | undefined, result?: any) => {
-      return this.handleUserResult(callback, err, result);
-    })
-  }
-
-  private handleUserResult(callback: (err: Error | undefined, user?: User) => void, err: Error | undefined, result?: any) {
-    if (err || !result || result.length === 0) {
-      return callback(err);
+  async getUserByEmail(email: string): Promise<User> {
+    try {
+      const result = await this.databaseManager.query(PostgresUserDaoImpl.GET_USER_BY_EMAIL, [email]);
+      if (!result || result.length === 0) {
+        return Promise.reject("No user with email " + email);
+      }
+      return this.convertRowToUser(result[0]);
+    } catch (e) {
+      throw e;
     }
-    const userTableRow = result[0] as UserTableRow;
-    const user = this.convertRowToUser(userTableRow);
-    return callback(undefined, user);
+
   }
 
-  saveUser(user: User, callback: (err: (Error | undefined)) => void): void {
-    this.databaseManager.query(PostgresUserDaoImpl.SAVE_USER, [user.email, user.password], (err, result) => {
-      return callback(err);
-    })
+  async getUserById(id: number): Promise<User> {
+    try {
+      const result = await this.databaseManager.query(PostgresUserDaoImpl.GET_USER_BY_ID, [id]);
+      if (!result || result.length === 0) {
+        return Promise.reject("No user with id " + id);
+      }
+      return this.convertRowToUser(result[0]);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+
+  async saveUser(user: User): Promise<void> {
+    try {
+      await this.databaseManager.query(PostgresUserDaoImpl.SAVE_USER, [user.email, user.password]);
+      return Promise.resolve();
+    } catch(e) {
+      throw e;
+    }
   }
 
   private convertRowToUser(userTableRow: UserTableRow): User {

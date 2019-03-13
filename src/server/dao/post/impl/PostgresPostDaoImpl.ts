@@ -12,45 +12,39 @@ export default class PostgresPostDaoImpl implements PostDao {
 
   constructor(private readonly databaseManager: DatabaseManager) {}
 
-  getPosts(numPosts: number, numPostOffset: number, callback: (err?: Error, posts?: Post[]) => void): void {
-    this.databaseManager.query(PostgresPostDaoImpl.GET_POSTS, [numPosts, numPostOffset], (err, result) => {
-      if (err) {
-        return callback(err);
-      }
-      else if (!result) {
-        return callback(undefined, []);
-      }
-      const postRows = result as PostTableRow[];
-      const posts = postRows.map(this.convertRowToPost);
-      callback(undefined, posts);
-    });
+  async getPosts(numPosts: number, numPostOffset: number): Promise<Post[]> {
+    try {
+      return await this.databaseManager.query(PostgresPostDaoImpl.GET_POSTS, [numPosts, numPostOffset]);
+    }
+    catch(e) {
+      throw e;
+    }
   }
 
-  private convertRowToPost(row: PostTableRow): Post {
-    return new Post(row.title, row.contents, row.id);
+  async findById(id: number): Promise<Post> {
+    try {
+      const result = await this.databaseManager.query(PostgresPostDaoImpl.GET_POST_BY_ID, [id]);
+      return result[0];
+    } catch(e) {
+      throw e;
+    }
   }
 
-  findById(id: number, callback: (err: Error | undefined, post?: Post) => void): void {
-    this.databaseManager.query(PostgresPostDaoImpl.GET_POST_BY_ID, [id], (err, result) => {
-      if (err || !result || result.length === 0) {
-        return callback(err);
-      }
-      const postRow = result[0] as PostTableRow;
-      const post = this.convertRowToPost(postRow);
-      return callback(undefined, post);
-    })
+  async savePost(userId: number, post: Post): Promise<void> {
+    try {
+      await this.databaseManager.query(PostgresPostDaoImpl.CREATE_NEW_POST, [userId, post.title, post.contents]);
+      return Promise.resolve();
+    } catch(e) {
+      throw e;
+    }
   }
 
-  savePost(userId: number, post: Post, callback: (err?: Error) => void): void {
-    this.databaseManager.query(PostgresPostDaoImpl.CREATE_NEW_POST, [userId, post.title, post.contents], (err, result) => {
-      return callback(err);
-    })
-  }
-
-  updatePost(post: Post, callback: (err: Error | undefined) => void): void {
-    this.databaseManager.query(PostgresPostDaoImpl.UPDATE_POST, [post.title, post.contents, post.id], (err) => {
-      callback(err);
-    });
+  async updatePost(post: Post): Promise<void> {
+    try {
+      await this.databaseManager.query(PostgresPostDaoImpl.UPDATE_POST, [post.title, post.contents, post.id]);
+    } catch(e) {
+      throw e;
+    }
   }
 
 }
