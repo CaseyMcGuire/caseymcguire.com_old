@@ -29,10 +29,10 @@ export default class PostgresDatabaseManagerImpl implements DatabaseManager {
     this.pool = new Pool(config);
   }
 
-  query(text: string, params: any[]): Promise<any[]> {
-    return new Promise((resolve, reject) => {
+  async query(text: string, params: any[]): Promise<any[]> {
+    return new Promise<any[]>((resolve, reject) => {
       this.pool.query(text, params, (err, result) => {
-        if (err || !result) {
+        if (err) {
           reject(err);
         }
         else {
