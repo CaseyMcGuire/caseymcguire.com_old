@@ -39,4 +39,18 @@
     border-left: #cccccc solid 3px;
     padding-left: 7px;
   }
+
+  pre {
+    border: 1px solid grey;
+    border-radius: 5px;
+    overflow: scroll;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    pre {
+      font-size: 11px;
+    }
+  }
 }
