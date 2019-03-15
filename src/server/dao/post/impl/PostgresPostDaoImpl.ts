@@ -5,7 +5,7 @@ import DatabaseManager from "../../../db/DatabaseManager";
 
 export default class PostgresPostDaoImpl implements PostDao {
 
-  private static readonly GET_POSTS = "SELECT * FROM posts ORDER BY id ASC LIMIT $1 OFFSET $2";
+  private static readonly GET_POSTS = "SELECT * FROM posts ORDER BY id DESC LIMIT $1 OFFSET $2";
   private static readonly CREATE_NEW_POST = "INSERT INTO posts (user_id, title, contents) VALUES ($1, $2, $3) RETURNING id";
   private static readonly GET_POST_BY_ID = "SELECT * FROM posts where id = $1 LIMIT 1";
   private static readonly UPDATE_POST = "UPDATE posts SET title = $1, contents = $2 WHERE id = $3;"
