@@ -34,10 +34,12 @@ export default class Post extends React.Component<Props,{}> {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['span']),
       allowedAttributes: Object.assign({}, sanitizeHtml.defaults.allowedAttributes, {'span' : ['class'], 'code': ['class']})
     });
+
+    const blogTitleElement = id ? <a href={"/posts/" + id}>{title}</a> : title;
     return (
       <div className={"post-container"}>
         <div className={"post-title-container"}>
-          <h1 className={"post-title"}>{title}</h1>
+          <h1 className={"post-title"}>{blogTitleElement}</h1>
         </div>
         <div className={"post-contents-container"}
              dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
