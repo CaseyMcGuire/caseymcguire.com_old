@@ -39,7 +39,7 @@ export default class Post extends React.Component<Props,{}> {
     return (
       <div className={"post-container"}>
         <div className={"post-title-container"}>
-          <h1 className={"post-title"}>{blogTitleElement}</h1>
+          <h2 className={"post-title"}>{blogTitleElement}</h2>
         </div>
         <div className={"post-contents-container"}
              dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
