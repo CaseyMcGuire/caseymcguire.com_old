@@ -21,10 +21,14 @@ export default class PostgresPostDaoImpl implements PostDao {
     }
   }
 
-  async findById(id: number): Promise<Post> {
+  async findById(id: number): Promise<Post | null> {
     try {
       const result = await this.databaseManager.query(PostgresPostDaoImpl.GET_POST_BY_ID, [id]);
-      return result[0];
+      if (result && result.length > 0) {
+        return result[0];
+      } else {
+        return null;
+      }
     } catch(e) {
       throw e;
     }

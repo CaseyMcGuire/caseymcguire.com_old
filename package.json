@@ -9,6 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server/index.js",
+    "test": "node_modules/mocha/bin/mocha -r node_modules/ts-node/register/ test/*.ts",
     "clean": "node_modules/trash-cli/cli.js dist",
     "build-client": "node_modules/webpack-cli/bin/cli.js --config webpack.production.js",
     "build-server": "node_modules/typescript/bin/tsc",
@@ -59,6 +60,7 @@
     "@types/express-session": "^1.15.10",
     "@types/highlight.js": "^9.12.3",
     "@types/marked": "^0.4.0",
+    "@types/mocha": "^5.2.6",
     "@types/node": "^10.3.2",
     "@types/passport": "^0.4.6",
     "@types/passport-local": "^1.0.33",
@@ -71,6 +73,7 @@
     "dotenv": "^6.2.0",
     "gulp": "^3.9.1",
     "gulp-watch": "^5.0.0",
+    "mocha": "^6.0.2",
     "node-sass": "^4.9.2",
     "nodemon": "^1.18.2",
     "sass-loader": "^7.1.0",
@@ -78,6 +81,8 @@
     "style-loader": "^0.21.0",
     "trash-cli": "^1.4.0",
     "ts-loader": "^4.4.2",
+    "ts-node": "^8.0.3",
+    "typemoq": "^2.1.0",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
     "webpack-merge": "^4.1.4"
