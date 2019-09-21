@@ -7,6 +7,7 @@ import SessionController from "../controllers/SessionController";
 import PostgresUserDaoImpl from "../dao/user/impl/PostgresUserDaoImpl";
 import DaoFactory, {DaoType} from "../dao/DaoFactory";
 import {PassportStatic} from "passport";
+import GamesController from "../controllers/GamesController";
 
 export const BUNDLE_BASE_PATH = "/public/";
 export const MAIN_VIEW_NAME = "main";
@@ -18,6 +19,7 @@ export default function configureRoutes(app: Application, passport: PassportStat
   const homeController = new HomeController();
   const postController = new PostController(postDao);
   const userController = new UserController();
+  const gamesController = new GamesController();
   const sessionController = new SessionController(passport, userDao);
 
   app.use(ensureSecure);
@@ -43,6 +45,8 @@ export default function configureRoutes(app: Application, passport: PassportStat
   app.get("/posts/:id/edit", isAdmin, postController.edit);
   app.post("/posts/update", isAdmin, postController.update);
   app.get("/posts/:id", postController.show);
+
+  app.get('/tetris', gamesController.tetris);
 
 
   app.use((err: any, req: Request, res: Response, next: NextFunction) => {
