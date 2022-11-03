@@ -72,7 +72,7 @@
     "concurrently": "^3.6.0",
     "css-loader": "^1.0.0",
     "dotenv": "^6.2.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-watch": "^5.0.0",
     "mocha": "^6.2.0",
     "node-sass": "^4.9.2",
